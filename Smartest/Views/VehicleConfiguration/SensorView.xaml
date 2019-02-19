@@ -14,7 +14,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="Selected Items:" FontSize="24" FontWeight="Bold" VerticalAlignment="Top"  HorizontalAlignment="Left" TextWrapping="Wrap"/>
-        <ListBox Grid.Row="1" ItemsSource="{Binding SelectedItemsCollection}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+        <ListBox Grid.Row="1" ItemsSource="{Binding PlacedItemsCollection}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding ItemName}"/>
@@ -29,7 +29,7 @@
             <ListBoxItem>Sensor 4</ListBoxItem>
         </ListBox>-->
         <GroupBox Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Header="New Sensor" >
-            <ItemsControl x:Name="itemsStack"  ItemsSource="{Binding ItemsCollection}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <ItemsControl x:Name="ItemsStack"  ItemsSource="{Binding ItemsCollection}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel/>

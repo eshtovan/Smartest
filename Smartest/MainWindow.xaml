@@ -113,7 +113,9 @@
                         <TextBlock Text="Sensors"/>
                     </StackPanel>
                 </TabItem.Header>
-                <ContentControl Content="{Binding SensorVM}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <ContentControl Content="{Binding SensorVM}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                   
+                </ContentControl>
             </TabItem>
 
             <!--brackets-->

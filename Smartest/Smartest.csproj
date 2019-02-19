@@ -106,8 +106,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Models\ConfigurationDataItem.cs" />
+    <Compile Include="Infrastructure\Objects\ConfigurationDataItem.cs" />
     <Compile Include="Infrastructure\Interfaces\IGlobalConfigService.cs" />
+    <Compile Include="Infrastructure\Objects\PlacedDataItem.cs" />
     <Compile Include="Models\ProjectSettings.cs" />
     <Compile Include="Infrastructure\GlobalConfigService.cs" />
     <Compile Include="Infrastructure\Interfaces\IConfigurationDataService.cs" />
@@ -118,11 +119,16 @@
     <Compile Include="Models\ConfigurationDataService.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Utilities\FoldersHelper.cs" />
+    <Compile Include="Utilities\ProjectsData.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\BaseViewModels\ConfigurationItemsBaseViewModel.cs" />
+    <Compile Include="ViewModels\BaseViewModels\ItemsSourceBaseViewModel.cs" />
     <Compile Include="ViewModels\MainWindowVM.cs" />
+    <Compile Include="ViewModels\VehicleConfigurationVM\ConfigurationViewModel.cs" />
     <Compile Include="ViewModels\VehicleConfigurationVM\SensorViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
+    <Compile Include="Views\VehicleConfiguration\ConfigurationView.xaml.cs">
+      <DependentUpon>ConfigurationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\VehicleConfiguration\SensorView.xaml.cs">
       <DependentUpon>SensorView.xaml</DependentUpon>
     </Compile>
@@ -145,6 +151,10 @@
     <Page Include="Infrastructure\Resources\DataTemplates.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\VehicleConfiguration\ConfigurationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\VehicleConfiguration\SensorView.xaml">
       <SubType>Designer</SubType>

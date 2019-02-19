@@ -1,4 +1,4 @@
-﻿using Smartest.Infrastructure.Models;
+﻿using Smartest.Infrastructure.Objects;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

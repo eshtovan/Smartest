@@ -1,7 +1,7 @@
 ﻿using Smartest.Utilities;
 using System.IO;
 
-namespace Smartest.Infrastructure.Models
+namespace Smartest.Infrastructure.Objects
 {
     /// <summary>
     /// Data of the Items (sensors, terrain, Stands, etc...)
@@ -9,7 +9,10 @@ namespace Smartest.Infrastructure.Models
     public class ConfigurationDataItem
     {
         public string ItemName { get; set; }
+
         public DirectoryInfo ItemDirectoryInfo { get; set; }
+
+        public DirectoryInfo DestinationDirectoryInfo { get; set; }
         public string ItemIconPath {
             get
             {
@@ -17,19 +20,19 @@ namespace Smartest.Infrastructure.Models
             }
         } 
         public ConfigurationDataItem(DirectoryInfo folderInfo)
-        { 
+        {
             ItemName = folderInfo.Name;
             ItemDirectoryInfo = folderInfo; 
         }
 
 
-        public bool IsConfigurationExist
-        {
-            get
-            {
-                return FoldersHelper.CheckIfConfigFileExists(ItemDirectoryInfo.FullName);
-            }
-        }
+        //public bool IsConfigurationExist
+        //{
+        //    get
+        //    {
+        //        return FoldersHelper.CheckIfConfigFileExists(ItemDirectoryInfo.FullName);
+        //    }
+        //}
         //TODO Add Get Configuration function
 
        

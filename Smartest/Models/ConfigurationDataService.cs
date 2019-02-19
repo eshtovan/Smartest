@@ -1,5 +1,5 @@
 ﻿using Smartest.Infrastructure.Interfaces;
-using Smartest.Infrastructure.Models;
+using Smartest.Infrastructure.Objects;
 using Smartest.Utilities;
 using System;
 using System.Collections.Generic;

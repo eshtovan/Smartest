@@ -20,6 +20,9 @@ namespace Smartest.ViewModels
             SimpleIoc.Default.Register<IGlobalConfigService, GlobalConfigService>();
             SimpleIoc.Default.Register<MainWindowVM>();
             SimpleIoc.Default.Register<SensorViewModel>();
+            SimpleIoc.Default.Register<ConfigurationViewModel>();
+
+            
         }
 
         internal static void Cleanup()
@@ -42,6 +45,14 @@ namespace Smartest.ViewModels
                 return ServiceLocator.Current.GetInstance<SensorViewModel>();
             }
         }
-       
+
+        
+        public ConfigurationViewModel ConfigurationVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ConfigurationViewModel>();
+            }
+        }
     }
 }

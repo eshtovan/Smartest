@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using GalaSoft.MvvmLight; 
 using CommonServiceLocator;
 using Smartest.ViewModels.VehicleConfigurationVM;
+using Smartest.Utilities;
 
 namespace Smartest.ViewModels
 {
@@ -18,6 +19,7 @@ namespace Smartest.ViewModels
         //internal ITabViewModel SelectedTabViewModel;
         public MainWindowVM()
         {
+            ProjectsData.CurrentProjectName = "Hummer";
             //TabViewModels = new ObservableCollection<ITabViewModel>();
             //TabViewModels.Add(new SensorViewModel { Header = "Tab B" });
             ////TabViewModels.Add(new ViewModelB { Header = "Tab B" });
@@ -34,6 +36,13 @@ namespace Smartest.ViewModels
             }
         }
 
-       
+        public ConfigurationViewModel ConfigurationVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ConfigurationViewModel>();
+            }
+        }
+
     }
 }

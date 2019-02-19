@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Smartest.Infrastructure.Objects;
 
 namespace Smartest.Utilities
 {
@@ -33,7 +34,7 @@ namespace Smartest.Utilities
         public static bool CheckIfConfigFileExists(string path)
         {
             var files = Directory.GetFiles(path);
-            bool ret = false;
+            bool  ret = false;
             foreach (var file in files)
             {
                 if(file.Contains(".conf"))
@@ -52,6 +53,15 @@ namespace Smartest.Utilities
                 Directory.CreateDirectory(path);
             }
             return true;
+        }
+
+        public static void CopyFileToLocation(string sourcePathWithFileName, string destinationPath,string newConfigFileName)
+        {
+            if (!File.Exists(Path.Combine(destinationPath, newConfigFileName)))
+            {
+                Directory.CreateDirectory(destinationPath);
+                File.Copy(sourcePathWithFileName, Path.Combine(destinationPath, newConfigFileName));
+            }
         }
     }
 }
