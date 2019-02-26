@@ -7,7 +7,7 @@ using Smartest.Utilities;
 
 namespace Smartest.ViewModels
 {
-    public class MainWindowVM : ViewModelBase
+    public class MainWindowVm : ViewModelBase
     {
         //private ObservableCollection<ITabViewModel> tabViewModels;
         //internal ObservableCollection<ITabViewModel> TabViewModels
@@ -17,7 +17,7 @@ namespace Smartest.ViewModels
         //}
 
         //internal ITabViewModel SelectedTabViewModel;
-        public MainWindowVM()
+        public MainWindowVm()
         {
             ProjectsData.CurrentProjectName = "Hummer";
             //TabViewModels = new ObservableCollection<ITabViewModel>();
@@ -28,21 +28,8 @@ namespace Smartest.ViewModels
             //SelectedTabViewModel = TabViewModels[0];
         }
 
-        public SensorViewModel SensorVM
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<SensorViewModel>();
-            }
-        }
+        public SensorViewModel SensorVm => ServiceLocator.Current.GetInstance<SensorViewModel>();
 
-        public ConfigurationViewModel ConfigurationVM
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<ConfigurationViewModel>();
-            }
-        }
-
+        public ConfigurationViewModel ConfigurationVm => ServiceLocator.Current.GetInstance<ConfigurationViewModel>();
     }
 }

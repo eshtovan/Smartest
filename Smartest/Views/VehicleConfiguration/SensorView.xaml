@@ -5,8 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Height="450" Width="250"
-        DataContext="{Binding SensorVM, Source={StaticResource ViewModelLocator}}">
-   
+        DataContext="{Binding SensorVm, Source={StaticResource ViewModelLocator}}">
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}" x:Key="ImageButtonStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ContentPresenter/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>
@@ -17,7 +29,18 @@
         <ListBox Grid.Row="1" ItemsSource="{Binding PlacedItemsCollection}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding ItemName}"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding ItemName}"/>
+                        <Button Grid.Column="1" Style="{StaticResource ImageButtonStyle}" Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}}, Path=DataContext.DeleteSelectedDataItem}" CommandParameter="{Binding}">
+                            <Image Width="15px" Height="15px" Source="{StaticResource DeleteImg}"/>
+                        </Button>
+                     </Grid>
+                    
+
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

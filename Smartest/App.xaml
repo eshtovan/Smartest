@@ -22,10 +22,13 @@
             </ResourceDictionary>
             <ResourceDictionary Source=".\Infrastructure\Resources\DataTemplates.xaml">
             </ResourceDictionary>
-            <!--<ResourceDictionary Source="Resources\Styles.xaml" />-->
+            <!--<ResourceDictionary Source="Resources\Styles.xaml" />--> 
       </ResourceDictionary.MergedDictionaries>
-        
+
         <vm:ViewModelLocator x:Key="ViewModelLocator" d:IsDataSource="True"/>
-    </ResourceDictionary>
+
+        <!--Images Section -->
+            <BitmapImage x:Key="DeleteImg" UriSource="Infrastructure/Resources/Icons/Trash.png" />
+        </ResourceDictionary>
   </Application.Resources>
 </Application>

@@ -63,5 +63,13 @@ namespace Smartest.Utilities
                 File.Copy(sourcePathWithFileName, Path.Combine(destinationPath, newConfigFileName));
             }
         }
+
+        public static void DeleteFile(string destinationPath)
+        {
+            if (File.Exists(destinationPath))
+            { 
+                File.Delete(destinationPath);
+            }
+        }
     }
 }

@@ -208,7 +208,9 @@
     <Resource Include="Infrastructure\Resources\Icons\lifesaver.png" />
     <Resource Include="Infrastructure\Resources\Icons\user.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Infrastructure\Resources\Icons\Trash.png" />
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>

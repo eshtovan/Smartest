@@ -22,6 +22,11 @@ namespace Smartest.Views.VehicleConfiguration
         public SensorView()
         {
             InitializeComponent();
-        } 
+        }
+
+        private void ImageButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
