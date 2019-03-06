@@ -34,7 +34,11 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="{Binding ItemName}"/>
+                        <TextBlock Grid.Column="0" Text="{Binding ItemName}">
+                            <TextBlock.InputBindings>
+                                <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}}, Path=DataContext.ItemDoubleClicked}" CommandParameter="{Binding}"/>
+                            </TextBlock.InputBindings>
+                        </TextBlock>
                         <Button Grid.Column="1" Style="{StaticResource ImageButtonStyle}" Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}}, Path=DataContext.DeleteSelectedDataItem}" CommandParameter="{Binding}">
                             <Image Width="15px" Height="15px" Source="{StaticResource DeleteImg}"/>
                         </Button>

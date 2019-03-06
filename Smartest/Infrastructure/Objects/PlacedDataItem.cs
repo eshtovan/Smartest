@@ -16,10 +16,10 @@ namespace Smartest.Infrastructure.Objects
         public string LocationPath { get; set; }
 
         //Path.Combine(sourcePath, dataItem.ItemName + ".conf")
-        public PlacedDataItem(string itemName , string loactionPath)
+        public PlacedDataItem(string itemName , string locationPath)
         {
             ItemName = itemName;
-            LocationPath = loactionPath;
+            LocationPath = locationPath;
         }
     }
 }

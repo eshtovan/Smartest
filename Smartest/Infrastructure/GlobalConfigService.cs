@@ -1,50 +1,46 @@
 ﻿using Smartest.Infrastructure.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Smartest.Infrastructure
 {
     public class GlobalConfigService : IGlobalConfigService
     {
-        protected ISettings _Settings;
+        protected ISettings Settings;
 
-        public GlobalConfigService(ISettings Settings)
+        public GlobalConfigService(ISettings settings)
         {
-            _Settings = Settings;
+            Settings = settings;
         }
 
-        public void Update(string SettingName, object value)
+        public void Update(string settingName, object value)
         {
-            if (String.IsNullOrEmpty(SettingName))
+            if (String.IsNullOrEmpty(settingName))
                 throw new ArgumentNullException("Setting name must be provided");
 
-            var Setting = _Settings[SettingName];
+            var setting = Settings[settingName];
 
-            if (Setting == null)
+            if (setting == null)
             {
-                throw new ArgumentException("Setting " + SettingName + " not found.");
+                throw new ArgumentException("Setting " + settingName + " not found.");
             }
-            else if (Setting.GetType() != value.GetType())
+            else if (setting.GetType() != value.GetType())
             {
-                throw new InvalidCastException("Unable to cast value to " + Setting.GetType());
+                throw new InvalidCastException("Unable to cast value to " + setting.GetType());
             }
             else
             {
-                _Settings[SettingName] = value;
-                _Settings.Save();
+                Settings[settingName] = value;
+                Settings.Save();
             }
 
         }
 
-        public object Get(string SettingName)
+        public object Get(string settingName)
         {
-            if (String.IsNullOrEmpty(SettingName))
+            if (String.IsNullOrEmpty(settingName))
                 throw new ArgumentNullException("Setting name must be provided");
 
-            return _Settings[SettingName];
+            return Settings[settingName];
         }
     }
 }

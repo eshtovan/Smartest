@@ -6,8 +6,38 @@
         xmlns:local="clr-namespace:Smartest.Views.VehicleConfiguration"
         mc:Ignorable="d"
          Height="450" Width="250"
-        DataContext="{Binding ConfigurationVM, Source={StaticResource ViewModelLocator}}">
+        DataContext="{Binding ConfigurationVm, Source={StaticResource ViewModelLocator}}">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}" x:Key="ImageButtonStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ContentPresenter/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
     <Grid>
-        <Label FontSize="35"> This is a Test </Label>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions> 
+        <WrapPanel Grid.Row="0"  HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Button  Style="{StaticResource ImageButtonStyle}" Command="{Binding GoBackToItemsList}">
+                <Image Width="20px" Height="20px" Source="{StaticResource Backwards}"/>
+            </Button>
+            <Label Content="{Binding ItemName}"></Label>
+        </WrapPanel>
+        <Grid Name="MyGrid" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+        </Grid>
+
     </Grid>
+   
 </UserControl>

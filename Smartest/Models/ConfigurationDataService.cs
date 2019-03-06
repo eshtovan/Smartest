@@ -26,5 +26,7 @@ namespace Smartest.Models
 
             return configurationCollection; 
         }
+
+
     }
 }

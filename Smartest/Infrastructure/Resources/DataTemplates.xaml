@@ -20,7 +20,10 @@
     <DataTemplate DataType="{x:Type vmVC:SensorViewModel}">
         <viewsVC:SensorView/>
     </DataTemplate>
-    
+    <DataTemplate DataType="{x:Type vmVC:ConfigurationViewModel}">
+        <viewsVC:ConfigurationView/>
+    </DataTemplate>
+
     <!--<DataTemplate DataType="{x:Type vm:ValidationsConvertes_ViewModel}">
 		<views:ValidationsConvertes_View/>
 	</DataTemplate-->

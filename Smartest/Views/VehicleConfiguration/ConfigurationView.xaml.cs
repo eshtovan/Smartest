@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Smartest.ViewModels.VehicleConfigurationVM;
 
 namespace Smartest.Views.VehicleConfiguration
 {
@@ -22,6 +23,7 @@ namespace Smartest.Views.VehicleConfiguration
         public ConfigurationView()
         {
             InitializeComponent();
+            this.DataContext = new ConfigurationViewModel(MyGrid);
         }
     }
 }

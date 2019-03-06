@@ -2,7 +2,7 @@
 {
     public interface IGlobalConfigService
     {
-        void Update(string SettingName, object value);
-        object Get(string SettingName);
+        void Update(string settingName, object value);
+        object Get(string settingName);
     }
 }

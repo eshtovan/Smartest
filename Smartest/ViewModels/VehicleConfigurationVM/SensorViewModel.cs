@@ -6,6 +6,8 @@ using GalaSoft.MvvmLight.Command;
 using System.IO;
 using Smartest.Utilities;
 using System.Collections.Generic;
+using System.Windows;
+using CommonServiceLocator;
 
 namespace Smartest.ViewModels.VehicleConfigurationVM
 {
@@ -21,16 +23,7 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
 
         public ICommand DeleteSelectedDataItem { get; }
 
-       // private int _switchView = 0;
-        //public int SwitchView
-        //{
-        //    get => _switchView;
-        //    set
-        //    {
-        //        _switchView = value;
-        //        RaisePropertyChanged();
-        //    }
-        //}  
+        public ICommand ItemDoubleClicked { get; }
 
         public SensorViewModel(IConfigurationDataService dataService, IGlobalConfigService globalSettings) :base(dataService,"Sensors", globalSettings)
         {
@@ -39,7 +32,20 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
             _configurationName = "Sensors";
             AddSelectedDataItem = new RelayCommand<ConfigurationDataItem>(OnAddItemCommandClicked);
             DeleteSelectedDataItem = new RelayCommand<PlacedDataItem>(OnDeleteItemCommandClicked);
+
+            ItemDoubleClicked = new RelayCommand<PlacedDataItem>(OnItemDoubleClickCommandClicked);
+
+
             // TODO Load  _addedItemsDictionary on startup
+        }
+
+        private void OnItemDoubleClickCommandClicked(PlacedDataItem placedItem)
+        {
+            ProjectsData.CurrentDataItem = placedItem;
+
+            //TODO Check if config file exists
+            ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).Main.CurrentPage = ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).Main.ConfigurationVm;
+
         }
 
 
@@ -52,10 +58,17 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
             //TODO 
             //Send Message to Unity - To spone item in to Scene
             SendUnityCommand();
-            //  SwitchView = 1;
+
+            //Switch View to configuration if exists
+
+           
+         ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).Main.CurrentPage = ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).Main.ConfigurationVm;
+
+          //  SwitchView = 1;
         }
 
 
+        //TODO Move part to service
         private void CopyConfigurationAndAddToList(ConfigurationDataItem dataItem)
         {
             var basePath = _globalSettings.Get("BasePath").ToString();
@@ -103,6 +116,8 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
             SendUnityCommand();
             //  SwitchView = 1;
         }
+
+        //TODO Move part to service
         private void DeleteConfigurationAndRemoveFromList(PlacedDataItem dataItem)
         {
             // RemoveItemName(dataItem.ItemName);
@@ -121,3 +136,16 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
 
     }
 }
+
+
+
+// private int _switchView = 0;
+//public int SwitchView
+//{
+//    get => _switchView;
+//    set
+//    {
+//        _switchView = value;
+//        RaisePropertyChanged();
+//    }
+//}  

@@ -13,40 +13,30 @@ namespace Smartest.ViewModels
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
+            // Services
             SimpleIoc.Default.Register<IConfigurationDataService, ConfigurationDataService>();
-
             SimpleIoc.Default.Register<ISettings, ProjectSettings>();
-
             SimpleIoc.Default.Register<IGlobalConfigService, GlobalConfigService>();
-            SimpleIoc.Default.Register<MainWindowVm>();
+
+            // View Models
             SimpleIoc.Default.Register<SensorViewModel>();
             SimpleIoc.Default.Register<ConfigurationViewModel>();
-
+            
+            SimpleIoc.Default.Register<MainWindowVm>();
+          
             
         }
 
         internal static void Cleanup()
         {
-             
+            
         }
-
-        public MainWindowVm Main
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<MainWindowVm>();
-            }
-        }
+         
+        public MainWindowVm Main => ServiceLocator.Current.GetInstance<MainWindowVm>();
 
         public SensorViewModel SensorVm => ServiceLocator.Current.GetInstance<SensorViewModel>();
 
 
-        public ConfigurationViewModel ConfigurationVm
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<ConfigurationViewModel>();
-            }
-        }
+        public ConfigurationViewModel ConfigurationVm => ServiceLocator.Current.GetInstance<ConfigurationViewModel>();
     }
 }

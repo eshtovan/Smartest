@@ -10,18 +10,7 @@
         Title="Smartest" Height="450" Width="800" Foreground="White" 
         WindowStartupLocation="CenterScreen"
         DataContext="{Binding Main, Source={StaticResource ViewModelLocator}}" >
-
-    <Window.Resources>
-        <BitmapImage x:Key="TerrainIcon" UriSource="/Infrastructure/Resources/Icons/terrain.png" />
-        <BitmapImage x:Key="SensorIcon" UriSource="/Infrastructure/Resources/Icons/sensor.png" />
-        <BitmapImage x:Key="BracketIcon" UriSource="/Infrastructure/Resources/Icons/bracket.png" />
-        <BitmapImage x:Key="Logo" UriSource="/Infrastructure/Resources/Icons/Logo.png" />
-        <BitmapImage x:Key="TestTerrainImage" UriSource="/Infrastructure/Resources/Icons/terrain.jpg" />
-        <BitmapImage x:Key="User" UriSource="/Infrastructure/Resources/Icons/user.png" />
-        <BitmapImage x:Key="Bell" UriSource="/Infrastructure/Resources/Icons/bell.png" />
-        <BitmapImage x:Key="Lifesaver" UriSource="/Infrastructure/Resources/Icons/lifesaver.png" />
-    </Window.Resources> 
-    
+  
     <Grid>
         <Grid Height="70" VerticalAlignment="Top" Background="#FF267FD2" >
             <Image Source="{StaticResource Logo}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5"/>
@@ -113,7 +102,8 @@
                         <TextBlock Text="Sensors"/>
                     </StackPanel>
                 </TabItem.Header>
-                <ContentControl Content="{Binding SensorVm}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <ContentControl Content="{Binding CurrentPage}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                            <!--was SensorVm-->
                    
                 </ContentControl>
             </TabItem>

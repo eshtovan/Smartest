@@ -28,6 +28,27 @@ namespace Smartest.ViewModels
             //SelectedTabViewModel = TabViewModels[0];
         }
 
+
+        private object _currentPage;
+
+        public object CurrentPage
+        {
+            get
+            {
+                if (_currentPage == null)
+                    _currentPage = ServiceLocator.Current.GetInstance<SensorViewModel>();
+
+                return _currentPage;
+            }
+            set
+            {
+                _currentPage = value;
+                //OnPropertyChanged(nameof(CurrentPage));
+                RaisePropertyChanged();
+            }
+        }
+
+
         public SensorViewModel SensorVm => ServiceLocator.Current.GetInstance<SensorViewModel>();
 
         public ConfigurationViewModel ConfigurationVm => ServiceLocator.Current.GetInstance<ConfigurationViewModel>();

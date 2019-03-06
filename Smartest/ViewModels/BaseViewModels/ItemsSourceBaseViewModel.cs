@@ -2,6 +2,7 @@
 using Smartest.Infrastructure.Objects;
 using Smartest.Infrastructure.Interfaces;
 using System.Collections.ObjectModel;
+using Smartest.Utilities;
 
 namespace Smartest.ViewModels.BaseViewModels
 {
@@ -64,6 +65,7 @@ namespace Smartest.ViewModels.BaseViewModels
             //Add Selected item to SelectedItems List
             _placedItemsCollection.Add(placedItem);
 
+            ProjectsData.CurrentDataItem = placedItem;
         }
 
         public void RemoveItemToSelectedCollection(string itemName)

@@ -28,7 +28,17 @@
         <vm:ViewModelLocator x:Key="ViewModelLocator" d:IsDataSource="True"/>
 
         <!--Images Section -->
-            <BitmapImage x:Key="DeleteImg" UriSource="Infrastructure/Resources/Icons/Trash.png" />
+        <BitmapImage x:Key="DeleteImg" UriSource="Infrastructure/Resources/Icons/Trash.png" />
+        <BitmapImage x:Key="Backwards" UriSource="Infrastructure/Resources/Icons/backwards.png" />
+
+        <BitmapImage x:Key="TerrainIcon" UriSource="/Infrastructure/Resources/Icons/terrain.png" />
+        <BitmapImage x:Key="SensorIcon" UriSource="/Infrastructure/Resources/Icons/sensor.png" />
+        <BitmapImage x:Key="BracketIcon" UriSource="/Infrastructure/Resources/Icons/bracket.png" />
+        <BitmapImage x:Key="Logo" UriSource="/Infrastructure/Resources/Icons/Logo.png" />
+        <BitmapImage x:Key="TestTerrainImage" UriSource="/Infrastructure/Resources/Icons/terrain.jpg" />
+        <BitmapImage x:Key="User" UriSource="/Infrastructure/Resources/Icons/user.png" />
+        <BitmapImage x:Key="Bell" UriSource="/Infrastructure/Resources/Icons/bell.png" />
+        <BitmapImage x:Key="Lifesaver" UriSource="/Infrastructure/Resources/Icons/lifesaver.png" />
         </ResourceDictionary>
   </Application.Resources>
 </Application>
