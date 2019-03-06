@@ -179,6 +179,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="DefaultItems\Sensors\Velodyne\velodyne.conf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -225,6 +226,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Infrastructure\Resources\Icons\backwards.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DefaultItems\Sensors\Camera\Icon.png" />
+    <Resource Include="DefaultItems\Sensors\Velodyne\Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

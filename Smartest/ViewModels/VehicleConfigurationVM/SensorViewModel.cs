@@ -64,7 +64,6 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
            
          ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).Main.CurrentPage = ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).Main.ConfigurationVm;
 
-          //  SwitchView = 1;
         }
 
 
@@ -114,7 +113,6 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
             //TODO 
             //Send Message to Unity - To spone item in to Scene
             SendUnityCommand();
-            //  SwitchView = 1;
         }
 
         //TODO Move part to service
@@ -136,16 +134,3 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
 
     }
 }
-
-
-
-// private int _switchView = 0;
-//public int SwitchView
-//{
-//    get => _switchView;
-//    set
-//    {
-//        _switchView = value;
-//        RaisePropertyChanged();
-//    }
-//}  
