@@ -44,7 +44,8 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
             ProjectsData.CurrentDataItem = placedItem;
 
             //TODO Check if config file exists
-            ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).Main.CurrentPage = ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).Main.ConfigurationVm;
+            if(placedItem.IsConfigurationExists)
+                ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).Main.CurrentPage = ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).Main.ConfigurationVm;
 
         }
 
@@ -61,8 +62,8 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
 
             //Switch View to configuration if exists
 
-           
-         ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).Main.CurrentPage = ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).Main.ConfigurationVm;
+            if (dataItem.IsConfigurationExist)
+                ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).Main.CurrentPage = ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).Main.ConfigurationVm;
 
         }
 
@@ -81,6 +82,7 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
                 FoldersHelper.CopyFileToLocation(Path.Combine(sourcePath, dataItem.ItemName + ".conf"), destinationPath, calculateditemName + ".conf");
             }
 
+            //return Placeid
             AddItemToSelectedCollection(calculateditemName, destinationPath);
         }
 

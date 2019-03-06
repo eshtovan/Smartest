@@ -15,11 +15,21 @@ namespace Smartest.Infrastructure.Objects
 
         public string LocationPath { get; set; }
 
-        //Path.Combine(sourcePath, dataItem.ItemName + ".conf")
+        public string ConfigurationPath { get; set; }
+
+        public bool IsConfigurationExists { get; set; } = false;
+
+        //
         public PlacedDataItem(string itemName , string locationPath)
         {
             ItemName = itemName;
             LocationPath = locationPath;
+            var configFile = Path.Combine(locationPath, itemName + ".conf");
+            if (File.Exists(configFile))
+            {
+                IsConfigurationExists = true;
+                ConfigurationPath = configFile;
+            }
         }
     }
 }

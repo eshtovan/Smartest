@@ -13,12 +13,9 @@ namespace Smartest.Infrastructure.Objects
         public DirectoryInfo ItemDirectoryInfo { get; set; }
 
         public DirectoryInfo DestinationDirectoryInfo { get; set; }
-        public string ItemIconPath {
-            get
-            {
-                return Path.Combine(ItemDirectoryInfo.FullName, "Icon.png");
-            }
-        } 
+
+        public string ItemIconPath => Path.Combine(ItemDirectoryInfo.FullName, "Icon.png");
+
         public ConfigurationDataItem(DirectoryInfo folderInfo)
         {
             ItemName = folderInfo.Name;
@@ -26,16 +23,11 @@ namespace Smartest.Infrastructure.Objects
         }
 
 
-        //public bool IsConfigurationExist
-        //{
-        //    get
-        //    {
-        //        return FoldersHelper.CheckIfConfigFileExists(ItemDirectoryInfo.FullName);
-        //    }
-        //}
+        public bool IsConfigurationExist => FoldersHelper.CheckIfConfigFileExists(ItemDirectoryInfo.FullName);
+
         //TODO Add Get Configuration function
 
-       
+
 
     }
 }
