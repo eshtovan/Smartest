@@ -45,9 +45,8 @@ namespace Smartest.ViewModels.BaseViewModels
         }
          
 
-        public void AddItemToSelectedCollection(PlacedDataItem placedItem)// string itemName,string itemPath)
-        {
-           // var placedItem = new PlacedDataItem(itemName, itemPath);
+        public void AddItemToSelectedCollection(PlacedDataItem placedItem)
+        { 
             _placedItemsDictionary.Add(placedItem.ItemName, placedItem);
             //Add Selected item to SelectedItems List
             _placedItemsCollection.Add(placedItem);
@@ -73,23 +72,4 @@ namespace Smartest.ViewModels.BaseViewModels
 
       
     }
-}
-
-
-//    AddSelectedDataItem = new RelayCommand<ConfigurationDataItem>(OnAddItemCommandClicked);
-
-//private void OnAddItemCommandClicked(ConfigurationDataItem dataitem)
-//{
-//    ////TODO
-
-//    //Add Selected item to SelectedItems List
-//    SelectedItemsCollection.Add(dataitem);
-//    //Copy Item Folder to the correct Project Folder (so that we can make changes to the configuration path
-//    //TODO 
-//    //Send Message to Unity - To spone item in to Scene
-
-
-//}
-
-
-//    public ICommand AddSelectedDataItem { get; private set; }
+} 

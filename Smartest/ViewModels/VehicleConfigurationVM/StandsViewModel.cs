@@ -7,7 +7,7 @@ using Smartest.Utilities;
 
 namespace Smartest.ViewModels.VehicleConfigurationVM
 {
-    public class SensorViewModel : ItemsSourceBaseViewModel 
+    public class StandsViewModel : ItemsSourceBaseViewModel 
     {
         private readonly IConfigurationDataService _dataService; 
         private readonly INavigation _navigationManager;
@@ -18,18 +18,18 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
 
         public ICommand ItemDoubleClicked { get; }
 
-        public SensorViewModel(IConfigurationDataService dataService, IGlobalConfigService globalSettings,
-            INavigation navigationManager) : base(dataService, "Sensors", globalSettings)
+        public StandsViewModel(IConfigurationDataService dataService, IGlobalConfigService globalSettings,
+            INavigation navigationManager) : base(dataService, "Stands", globalSettings)
         {
             _dataService = dataService;
             _navigationManager = navigationManager;
-            _configurationName = "Sensors";
+            _configurationName = "Stands";
             AddSelectedDataItem = new RelayCommand<ConfigurationDataItem>(OnAddItemCommandClicked);
             DeleteSelectedDataItem = new RelayCommand<PlacedDataItem>(OnDeleteItemCommandClicked);
 
             ItemDoubleClicked = new RelayCommand<PlacedDataItem>(OnItemDoubleClickCommandClicked);
              
-            // TODO Load  _addedItemsDictionary on startup from unity
+            // TODO Load  _addedItemsDictionary on startup
         }
 
         private void OnItemDoubleClickCommandClicked(PlacedDataItem placedItem)
@@ -38,7 +38,7 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
 
             //TODO Check if config file exists
             if (placedItem.IsConfigurationExists)
-            { 
+            {
                 _navigationManager.GoToPage(Enums.Pages.ConfigurationVm);
             }
 
@@ -56,9 +56,10 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
            //Send Message to Unity - To spone item in to Scene
            SendUnityCommand();
 
-            //Switch View to configuration if exists 
+            //Switch View to configuration if exists
             if (dataItem.IsConfigurationExist)
-            { 
+            {
+              
                 _navigationManager.GoToPage(Enums.Pages.ConfigurationVm);
             }
 
@@ -78,8 +79,8 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
             //TODO 
             //Send Message to Unity - To spone item in to Scene
             SendUnityCommand();
-        } 
-
+        }
+         
         #endregion
 
     }

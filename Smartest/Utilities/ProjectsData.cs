@@ -6,9 +6,10 @@ namespace Smartest.Utilities
     {
        public static string CurrentProjectName { get; set; }
 
+       public static string CurrentConfigurationName { get; set; }
+
        public static PlacedDataItem CurrentDataItem { get; set; }
 
        public static object LastPage { get; set; } = null;
-
     }
 }

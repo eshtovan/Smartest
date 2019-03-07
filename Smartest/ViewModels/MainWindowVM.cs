@@ -20,6 +20,8 @@ namespace Smartest.ViewModels
         public MainWindowVm()
         {
             ProjectsData.CurrentProjectName = "Hummer";
+
+            ProjectsData.CurrentConfigurationName = "Hummer First Test";
             //TabViewModels = new ObservableCollection<ITabViewModel>();
             //TabViewModels.Add(new SensorViewModel { Header = "Tab B" });
             ////TabViewModels.Add(new ViewModelB { Header = "Tab B" });
@@ -48,8 +50,11 @@ namespace Smartest.ViewModels
             }
         }
 
+        public StandsViewModel StandsVm => ServiceLocator.Current.GetInstance<StandsViewModel>();
+
 
         public SensorViewModel SensorVm => ServiceLocator.Current.GetInstance<SensorViewModel>();
+
 
         public ConfigurationViewModel ConfigurationVm => ServiceLocator.Current.GetInstance<ConfigurationViewModel>();
     }

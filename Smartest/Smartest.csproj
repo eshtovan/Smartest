@@ -127,10 +127,14 @@
     <Compile Include="ViewModels\BaseViewModels\ItemsSourceBaseViewModel.cs" />
     <Compile Include="ViewModels\MainWindowVM.cs" />
     <Compile Include="ViewModels\VehicleConfigurationVM\ConfigurationViewModel.cs" />
+    <Compile Include="ViewModels\VehicleConfigurationVM\StandsViewModel.cs" />
     <Compile Include="ViewModels\VehicleConfigurationVM\SensorViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="Views\VehicleConfiguration\ConfigurationView.xaml.cs">
       <DependentUpon>ConfigurationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VehicleConfiguration\StandsView.xaml.cs">
+      <DependentUpon>StandsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\VehicleConfiguration\SensorView.xaml.cs">
       <DependentUpon>SensorView.xaml</DependentUpon>
@@ -158,6 +162,10 @@
     <Page Include="Views\VehicleConfiguration\ConfigurationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VehicleConfiguration\StandsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\VehicleConfiguration\SensorView.xaml">
       <SubType>Designer</SubType>
@@ -233,6 +241,12 @@
   <ItemGroup>
     <Resource Include="DefaultItems\Sensors\Camera\Icon.png" />
     <Resource Include="DefaultItems\Sensors\Velodyne\Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DefaultItems\Stands\Stand 1\Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DefaultItems\Stands\Stand 2\Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

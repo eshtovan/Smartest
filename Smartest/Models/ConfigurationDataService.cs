@@ -45,7 +45,7 @@ namespace Smartest.Models
             string destinationPath = "";
             if (FoldersHelper.CheckIfConfigFileExists(sourcePath))
             {
-                destinationPath = Path.Combine(basePath, "Projects", ProjectsData.CurrentProjectName, "Configurations");
+                destinationPath = Path.Combine(basePath, "Projects", ProjectsData.CurrentProjectName, ProjectsData.CurrentConfigurationName, "Configurations");
 
                 FoldersHelper.CopyFileToLocation(Path.Combine(sourcePath, dataItem.ItemName + ".conf"), destinationPath, calculateditemName + ".conf");
             }

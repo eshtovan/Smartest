@@ -113,21 +113,12 @@
                 <TabItem.Header>
                     <StackPanel  Orientation="Vertical">
                         <Image Width="50" Source="{StaticResource BracketIcon}"/>
-                        <TextBlock Text="Brackets"/>
+                        <TextBlock Text="Stands"/>
                     </StackPanel>
                 </TabItem.Header>
-                <Grid>
-                    <ListBox>
-                        <ListBoxItem FontWeight="Bold" FontSize="14" Margin="0,5" Content="Selected Brackets"/>
-                        <ListBoxItem Content="Bracket 1"/>
-                        <ListBoxItem Content="Bracket 2"/>
-                    </ListBox>
-                    <GroupBox Grid.Row="1" VerticalAlignment="Bottom" Header="New Bracket" >
-                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
-                            <Image Source="{StaticResource TestTerrainImage}" Width="50" Height="50"/>
-                        </StackPanel>
-                    </GroupBox>
-                </Grid>
+                <ContentControl Content="{Binding StandsVm}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                     
+                </ContentControl>
             </TabItem>
         </TabControl>
     </Grid>
