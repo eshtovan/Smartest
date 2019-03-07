@@ -68,38 +68,25 @@
                 </Style>
             </TabControl.ItemContainerStyle>
            
-            <!--Terrains-->
-            <!--<TabItem>
-                <TabItem.Header >
-                    <StackPanel  Orientation="Vertical" >
-                        <Image Width="50" Source="{StaticResource TerrainIcon}" />
-                        <TextBlock Text="Terrain"/>
+            <!--Terrains--> 
+            <TabItem >
+                <TabItem.Header>
+                    <StackPanel  Orientation="Vertical">
+                        <Image Width="50" Source="{StaticResource Terrains}"/>
+                        <TextBlock Text="Terrains" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </TabItem.Header>
-                <Grid Background="White">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <ListBox Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                        <ListBoxItem FontWeight="Bold" FontSize="14" Margin="0,5" Content="Selected Terrain"/>
-                        <ListBoxItem Content="Terrain 2"/>
+                <ContentControl Content="{Binding ControllerVm}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
 
-                    </ListBox>
-                    <GroupBox Grid.Row="1" VerticalAlignment="Bottom" Header="New Terrain" >
-                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
-                            <Image Source="{StaticResource TestTerrainImage}" Width="50" Height="50"/>
-                        </StackPanel>
-                    </GroupBox>
+                </ContentControl>
+            </TabItem>
 
-                </Grid>
-            </TabItem>-->
             <!--Sensors-->
             <TabItem>
                 <TabItem.Header>
                     <StackPanel  Orientation="Vertical">
                         <Image Width="50" Source="{StaticResource SensorIcon}" />
-                        <TextBlock Text="Sensors"/>
+                        <TextBlock Text="Sensors"  HorizontalAlignment="Center"/>
                     </StackPanel>
                 </TabItem.Header>
                 <ContentControl Content="{Binding CurrentPage}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
@@ -113,13 +100,27 @@
                 <TabItem.Header>
                     <StackPanel  Orientation="Vertical">
                         <Image Width="50" Source="{StaticResource BracketIcon}"/>
-                        <TextBlock Text="Stands"/>
+                        <TextBlock Text="Stands"  HorizontalAlignment="Center"/>
                     </StackPanel>
                 </TabItem.Header>
                 <ContentControl Content="{Binding StandsVm}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
                      
                 </ContentControl>
             </TabItem>
+
+            <!--Controller-->
+            <TabItem >
+                <TabItem.Header>
+                    <StackPanel  Orientation="Vertical">
+                        <Image Width="50" Source="{StaticResource Controller}"/>
+                        <TextBlock Text="Controller"  HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <ContentControl Content="{Binding ControllerVm}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
+
+                </ContentControl>
+            </TabItem>
+
         </TabControl>
     </Grid>
 </Window>

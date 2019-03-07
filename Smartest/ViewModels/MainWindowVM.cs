@@ -45,7 +45,6 @@ namespace Smartest.ViewModels
             set
             {
                 _currentPage = value;
-                //OnPropertyChanged(nameof(CurrentPage));
                 RaisePropertyChanged();
             }
         }
@@ -55,6 +54,7 @@ namespace Smartest.ViewModels
 
         public SensorViewModel SensorVm => ServiceLocator.Current.GetInstance<SensorViewModel>();
 
+        public ControllerViewModel ControllerVm => ServiceLocator.Current.GetInstance<ControllerViewModel>();
 
         public ConfigurationViewModel ConfigurationVm => ServiceLocator.Current.GetInstance<ConfigurationViewModel>();
     }

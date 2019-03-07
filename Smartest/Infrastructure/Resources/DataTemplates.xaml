@@ -17,6 +17,10 @@
 		<views:Random_View></views:Random_View>
 	</DataTemplate>-->
 
+    <DataTemplate DataType="{x:Type vmVC:ControllerViewModel}">
+        <viewsVC:ControllerView/>
+    </DataTemplate>
+
     <DataTemplate DataType="{x:Type vmVC:StandsViewModel}">
         <viewsVC:StandsView/>
     </DataTemplate>

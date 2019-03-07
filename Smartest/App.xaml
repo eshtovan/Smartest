@@ -30,6 +30,10 @@
         <!--Images Section -->
         <BitmapImage x:Key="DeleteImg" UriSource="Infrastructure/Resources/Icons/Trash.png" />
         <BitmapImage x:Key="Backwards" UriSource="Infrastructure/Resources/Icons/backwards.png" />
+        <BitmapImage x:Key="Controller" UriSource="Infrastructure/Resources/Icons/Controller.png" />
+        <BitmapImage x:Key="Terrains" UriSource="Infrastructure/Resources/Icons/terrain.png" />
+
+
 
         <BitmapImage x:Key="TerrainIcon" UriSource="/Infrastructure/Resources/Icons/terrain.png" />
         <BitmapImage x:Key="SensorIcon" UriSource="/Infrastructure/Resources/Icons/sensor.png" />

@@ -29,7 +29,7 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
             
         }
 
-        public ConfigurationViewModel(Grid myGrid) // TODO get INavigation here
+        public ConfigurationViewModel(Grid myGrid) // TODO get INavigation here // Move path to constructor
         {
              _myGrid = myGrid;
              //_navigation = navigation;

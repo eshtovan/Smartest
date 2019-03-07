@@ -127,11 +127,15 @@
     <Compile Include="ViewModels\BaseViewModels\ItemsSourceBaseViewModel.cs" />
     <Compile Include="ViewModels\MainWindowVM.cs" />
     <Compile Include="ViewModels\VehicleConfigurationVM\ConfigurationViewModel.cs" />
+    <Compile Include="ViewModels\VehicleConfigurationVM\ControllerViewModel.cs" />
     <Compile Include="ViewModels\VehicleConfigurationVM\StandsViewModel.cs" />
     <Compile Include="ViewModels\VehicleConfigurationVM\SensorViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="Views\VehicleConfiguration\ConfigurationView.xaml.cs">
       <DependentUpon>ConfigurationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VehicleConfiguration\ControllerView.xaml.cs">
+      <DependentUpon>ControllerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\VehicleConfiguration\StandsView.xaml.cs">
       <DependentUpon>StandsView.xaml</DependentUpon>
@@ -160,6 +164,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\VehicleConfiguration\ConfigurationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VehicleConfiguration\ControllerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -247,6 +255,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="DefaultItems\Stands\Stand 2\Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Infrastructure\Resources\Icons\Controller.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

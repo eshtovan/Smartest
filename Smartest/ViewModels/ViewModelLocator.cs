@@ -20,6 +20,7 @@ namespace Smartest.ViewModels
             SimpleIoc.Default.Register<INavigation, NavigationManager>();
 
             // View Models
+            SimpleIoc.Default.Register<ControllerViewModel>();
             SimpleIoc.Default.Register<StandsViewModel>();
             SimpleIoc.Default.Register<SensorViewModel>();
             SimpleIoc.Default.Register<ConfigurationViewModel>();
@@ -37,6 +38,10 @@ namespace Smartest.ViewModels
         public MainWindowVm VehicleConfigVm => ServiceLocator.Current.GetInstance<MainWindowVm>();
 
         public SensorViewModel SensorVm => ServiceLocator.Current.GetInstance<SensorViewModel>();
+
+
+        public ControllerViewModel ControllerVm => ServiceLocator.Current.GetInstance<ControllerViewModel>();
+
 
         public StandsViewModel StandsVm => ServiceLocator.Current.GetInstance<StandsViewModel>();
 
