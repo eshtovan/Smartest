@@ -13,29 +13,26 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
 {
     public class SensorViewModel : ItemsSourceBaseViewModel 
     {
-      //  private readonly IConfigurationDataService _dataService;
-        private readonly IGlobalConfigService _globalSettings;
-        private readonly string _configurationName;
-        // Also need to check if named changed
-        private readonly Dictionary<string, int> _addedItemsDictionary = new Dictionary<string, int>();
-
+        private readonly IConfigurationDataService _dataService; 
+        private readonly INavigation _navigationManager;
+        private readonly string _configurationName; 
         public ICommand AddSelectedDataItem { get; }
 
         public ICommand DeleteSelectedDataItem { get; }
 
         public ICommand ItemDoubleClicked { get; }
 
-        public SensorViewModel(IConfigurationDataService dataService, IGlobalConfigService globalSettings) :base(dataService,"Sensors", globalSettings)
+        public SensorViewModel(IConfigurationDataService dataService, IGlobalConfigService globalSettings,
+            INavigation navigationManager) : base(dataService, "Sensors", globalSettings)
         {
-           // _dataService = dataService;
-            _globalSettings = globalSettings;
+            _dataService = dataService;
+            _navigationManager = navigationManager;
             _configurationName = "Sensors";
             AddSelectedDataItem = new RelayCommand<ConfigurationDataItem>(OnAddItemCommandClicked);
             DeleteSelectedDataItem = new RelayCommand<PlacedDataItem>(OnDeleteItemCommandClicked);
 
             ItemDoubleClicked = new RelayCommand<PlacedDataItem>(OnItemDoubleClickCommandClicked);
-
-
+             
             // TODO Load  _addedItemsDictionary on startup
         }
 
@@ -44,9 +41,16 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
             ProjectsData.CurrentDataItem = placedItem;
 
             //TODO Check if config file exists
-            if(placedItem.IsConfigurationExists)
-                ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).Main.CurrentPage = ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).Main.ConfigurationVm;
+            if (placedItem.IsConfigurationExists)
+            {
+                //  ProjectsData.LastPage = ((ViewModelLocator) Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.CurrentPage;
+                 
+                _navigationManager.GoToPage(Enums.Pages.ConfigurationVm);
 
+                //((ViewModelLocator) Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.CurrentPage = ((ViewModelLocator) Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm
+                //    .ConfigurationVm;
+            }
+            
         }
 
 
@@ -54,55 +58,28 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
 
         private void OnAddItemCommandClicked(ConfigurationDataItem dataItem)
         {
-            CopyConfigurationAndAddToList(dataItem);
+            var placedItem =  _dataService.CopyConfigurationAndAddToList(dataItem, _configurationName);
 
-            //TODO 
-            //Send Message to Unity - To spone item in to Scene
-            SendUnityCommand();
+            AddItemToSelectedCollection(placedItem);
+           //TODO 
+           //Send Message to Unity - To spone item in to Scene
+           SendUnityCommand();
 
             //Switch View to configuration if exists
 
             if (dataItem.IsConfigurationExist)
-                ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).Main.CurrentPage = ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).Main.ConfigurationVm;
+            {
+                //ProjectsData.LastPage = ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.CurrentPage;
+
+                //((ViewModelLocator) Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.CurrentPage = ((ViewModelLocator) Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm
+                //    .ConfigurationVm;
+                 
+                _navigationManager.GoToPage(Enums.Pages.ConfigurationVm);
+            }
 
         }
 
-
-        //TODO Move part to service
-        private void CopyConfigurationAndAddToList(ConfigurationDataItem dataItem)
-        {
-            var basePath = _globalSettings.Get("BasePath").ToString();
-            var sourcePath = Path.Combine(basePath, _configurationName, dataItem.ItemName);
-            var calculateditemName = CalculatedItemName(dataItem);
-            string destinationPath = "";
-            if (FoldersHelper.CheckIfConfigFileExists(sourcePath))
-            {
-                destinationPath = Path.Combine(basePath, "Projects", ProjectsData.CurrentProjectName, "Configurations");
-
-                FoldersHelper.CopyFileToLocation(Path.Combine(sourcePath, dataItem.ItemName + ".conf"), destinationPath, calculateditemName + ".conf");
-            }
-
-            //return Placeid
-            AddItemToSelectedCollection(calculateditemName, destinationPath);
-        }
-
-        private string CalculatedItemName(ConfigurationDataItem dataItem)
-        {
-            string calculatedName;
-            if (_addedItemsDictionary.ContainsKey(dataItem.ItemName))
-            {
-                int numberOfShows = _addedItemsDictionary[dataItem.ItemName] + 1;
-                calculatedName = dataItem.ItemName + numberOfShows;
-                _addedItemsDictionary[dataItem.ItemName] = numberOfShows;
-            }
-            else
-            {
-                _addedItemsDictionary.Add(dataItem.ItemName, 0);
-                calculatedName = dataItem.ItemName;
-            }
-
-            return calculatedName;
-        }
+         
 
         #endregion
 
@@ -110,27 +87,30 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
         #region Remove Item From List
         private void OnDeleteItemCommandClicked(PlacedDataItem dataItem)
         {
-            DeleteConfigurationAndRemoveFromList(dataItem);
+           var itemNameTodelete = _dataService.DeleteConfigurationAndRemoveFromList(dataItem);
 
+           RemoveItemToSelectedCollection(itemNameTodelete);
             //TODO 
             //Send Message to Unity - To spone item in to Scene
             SendUnityCommand();
         }
 
         //TODO Move part to service
-        private void DeleteConfigurationAndRemoveFromList(PlacedDataItem dataItem)
-        {
-            // RemoveItemName(dataItem.ItemName);
-            FoldersHelper.DeleteFile(Path.Combine(dataItem.LocationPath, dataItem.ItemName + ".conf"));
-            RemoveItemToSelectedCollection(dataItem.ItemName);
-        }
-        private void RemoveItemName(string dataItemName)
-        {
-            if (_addedItemsDictionary.ContainsKey(dataItemName))
-            {
-                _addedItemsDictionary[dataItemName] = _addedItemsDictionary[dataItemName] - 1;
-            }
-        }
+        //private void DeleteConfigurationAndRemoveFromList(PlacedDataItem dataItem)
+        //{
+        //    // RemoveItemName(dataItem.ItemName);
+        //    FoldersHelper.DeleteFile(Path.Combine(dataItem.LocationPath, dataItem.ItemName + ".conf"));
+        //    RemoveItemToSelectedCollection(dataItem.ItemName);
+        //}
+
+
+        //private void RemoveItemName(string dataItemName)
+        //{
+        //    if (_addedItemsDictionary.ContainsKey(dataItemName))
+        //    {
+        //        _addedItemsDictionary[dataItemName] = _addedItemsDictionary[dataItemName] - 1;
+        //    }
+        //}
 
         #endregion
 

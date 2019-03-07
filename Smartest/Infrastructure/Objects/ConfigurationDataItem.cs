@@ -12,7 +12,7 @@ namespace Smartest.Infrastructure.Objects
 
         public DirectoryInfo ItemDirectoryInfo { get; set; }
 
-        public DirectoryInfo DestinationDirectoryInfo { get; set; }
+       // public DirectoryInfo DestinationDirectoryInfo { get; set; }
 
         public string ItemIconPath => Path.Combine(ItemDirectoryInfo.FullName, "Icon.png");
 
@@ -22,7 +22,7 @@ namespace Smartest.Infrastructure.Objects
             ItemDirectoryInfo = folderInfo; 
         }
 
-
+        
         public bool IsConfigurationExist => FoldersHelper.CheckIfConfigFileExists(ItemDirectoryInfo.FullName);
 
         //TODO Add Get Configuration function

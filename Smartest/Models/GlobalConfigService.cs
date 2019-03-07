@@ -1,7 +1,7 @@
-﻿using Smartest.Infrastructure.Interfaces;
-using System;
+﻿using System;
+using Smartest.Infrastructure.Interfaces;
 
-namespace Smartest.Infrastructure
+namespace Smartest.Models
 {
     public class GlobalConfigService : IGlobalConfigService
     {

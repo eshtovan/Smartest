@@ -11,7 +11,9 @@ namespace Smartest.Infrastructure.Interfaces
    public interface IConfigurationDataService
     {  
         ObservableCollection<ConfigurationDataItem> GetItemsCollection(string collectionName,string path);
-         
 
+        PlacedDataItem CopyConfigurationAndAddToList(ConfigurationDataItem dataItem, string configurationName);
+
+        string DeleteConfigurationAndRemoveFromList(PlacedDataItem dataItem);
     }
 }

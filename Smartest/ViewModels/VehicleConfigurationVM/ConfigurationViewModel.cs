@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Ioc;
+using Smartest.Infrastructure.Interfaces;
 using Smartest.Infrastructure.Objects;
 using Smartest.Utilities;
 
@@ -14,48 +15,54 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
     public class ConfigurationViewModel : BaseViewModel
     {
         private readonly Grid _myGrid;
-       
-        private string configInputPath;// = @"C:\SmartestBaseDirectory\Projects\Hummer\Configurations\Velodyne.conf";
+        private static INavigation _navigation;
+
 
         public ICommand GoBackToItemsList { get; }
 
         public string ItemName => ProjectsData.CurrentDataItem.ItemName;
 
         [PreferredConstructor]
-        public ConfigurationViewModel()//Grid myGrid)
+        public ConfigurationViewModel(INavigation navigation)//Grid myGrid)
         {
+            _navigation = navigation;
             
         }
 
-        public ConfigurationViewModel(Grid myGrid)
+        public ConfigurationViewModel(Grid myGrid) // TODO get INavigation here
         {
              _myGrid = myGrid;
+             //_navigation = navigation;
 
-             GoBackToItemsList = new RelayCommand(AddMethod2);
+             // check if need to show icon go back (for Controller window)
+             GoBackToItemsList = new RelayCommand(GoBackToItemsListCommand);
 
 
-            var item = ProjectsData.CurrentDataItem;
-            configInputPath = Path.Combine(item.LocationPath, item.ItemName + ".conf");
-            BuildPage(configInputPath);
+           
+            BuildPage(ProjectsData.CurrentDataItem.ConfigurationPath);
 
             //  AddCommand2 = new DelegateCommand(AddMethod2);
          
         }
 
-       
 
-        private void AddMethod2()//PlacedDataItem item)
+        public bool IsGoBackToItemsVisibly => ProjectsData.LastPage != null;
+
+
+        private void GoBackToItemsListCommand()//PlacedDataItem item)
         {
             // TODO also get first configuration path in order to restore defaults
             // BuildPage(configInputPath);
-            ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).Main.CurrentPage = ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).Main.SensorVm;
+            //TODO
+           // _navigation.GoBack();
 
+            ((ViewModelLocator) Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.CurrentPage = ProjectsData.LastPage;//((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.SensorVm;
         }
 
 
         private void BuildPage(string configFilePath)
         {
-            //  var configFilePath = @"C:\SmartestBaseDirectory\Projects\Hummer\Configurations\Velodyne.conf";
+       
             var keysAndValues = LoadConfigFile(configFilePath);
             if (keysAndValues.Count > 0)
             {
@@ -136,7 +143,6 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
         {
 
             //TODO Save Backup File to restore last state
-            //configInputPath
             var sb = new StringBuilder();
             bool first = true;
             foreach (var myGridChild in _myGrid.Children)
@@ -171,7 +177,7 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
                 //  var name = ((System.RuntimeType) ((System.Windows.FrameworkElement) myGridChild).DefaultStyleKey).FullName;
             }
 
-            File.WriteAllText(configInputPath, sb.ToString());
+            File.WriteAllText(ProjectsData.CurrentDataItem.ConfigurationPath, sb.ToString());
 
         }
 

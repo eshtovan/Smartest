@@ -8,6 +8,7 @@ namespace Smartest.Utilities
 
        public static PlacedDataItem CurrentDataItem { get; set; }
 
-        
+       public static object LastPage { get; set; } = null;
+
     }
 }

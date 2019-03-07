@@ -13,6 +13,14 @@ namespace Smartest.Models
 {
     public class ConfigurationDataService : IConfigurationDataService
     {
+        private readonly IGlobalConfigService _globalSettings;
+        private readonly Dictionary<string, int> _addedItemsDictionary = new Dictionary<string, int>();
+
+
+        public ConfigurationDataService(IGlobalConfigService globalSettings)
+        {
+            _globalSettings = globalSettings;
+        }
         public ObservableCollection<ConfigurationDataItem> GetItemsCollection(string collectionName,string path)
         {
             var configurationCollection = new ObservableCollection<ConfigurationDataItem>();
@@ -27,6 +35,52 @@ namespace Smartest.Models
             return configurationCollection; 
         }
 
+        //TODO add more functionality here
+
+        public PlacedDataItem CopyConfigurationAndAddToList(ConfigurationDataItem dataItem ,string configurationName)
+        {
+            var basePath = _globalSettings.Get("BasePath").ToString();
+            var sourcePath = Path.Combine(basePath, configurationName, dataItem.ItemName);
+            var calculateditemName = CalculatedItemName(dataItem);
+            string destinationPath = "";
+            if (FoldersHelper.CheckIfConfigFileExists(sourcePath))
+            {
+                destinationPath = Path.Combine(basePath, "Projects", ProjectsData.CurrentProjectName, "Configurations");
+
+                FoldersHelper.CopyFileToLocation(Path.Combine(sourcePath, dataItem.ItemName + ".conf"), destinationPath, calculateditemName + ".conf");
+            }
+
+            //return Placeid
+            // AddItemToSelectedCollection(calculateditemName, destinationPath); 
+            return new PlacedDataItem(calculateditemName, destinationPath);
+        }
+
+
+        private string CalculatedItemName(ConfigurationDataItem dataItem)
+        {
+            string calculatedName;
+            if (_addedItemsDictionary.ContainsKey(dataItem.ItemName))
+            {
+                int numberOfShows = _addedItemsDictionary[dataItem.ItemName] + 1;
+                calculatedName = dataItem.ItemName + numberOfShows;
+                _addedItemsDictionary[dataItem.ItemName] = numberOfShows;
+            }
+            else
+            {
+                _addedItemsDictionary.Add(dataItem.ItemName, 0);
+                calculatedName = dataItem.ItemName;
+            }
+
+            return calculatedName;
+        }
+
+
+        public string DeleteConfigurationAndRemoveFromList(PlacedDataItem dataItem)
+        {
+            // RemoveItemName(dataItem.ItemName);
+            FoldersHelper.DeleteFile(dataItem.ConfigurationPath);
+            return dataItem.ItemName;
+        }
 
     }
 }

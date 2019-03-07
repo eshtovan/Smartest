@@ -8,7 +8,7 @@ namespace Smartest.ViewModels.BaseViewModels
 {
     public class ItemsSourceBaseViewModel : BaseViewModel
     {
-       // private readonly IConfigurationDataService _dataService;
+        private readonly IConfigurationDataService _dataService;
         private readonly IGlobalConfigService _globalSettings;
         private string _configurationName;
         private ObservableCollection<ConfigurationDataItem> _itemsCollection = new ObservableCollection<ConfigurationDataItem>();
@@ -37,31 +37,18 @@ namespace Smartest.ViewModels.BaseViewModels
         }
         public ItemsSourceBaseViewModel(IConfigurationDataService dataService,string configurationName, IGlobalConfigService globalSettings)
         {
-          //  _dataService = dataService;
+            _dataService = dataService;
             _configurationName = configurationName;
             _globalSettings = globalSettings;
             //Get according to the configurationName the wanted items
-            ItemsCollection = dataService.GetItemsCollection(configurationName, globalSettings.Get("BasePath").ToString());
-        //    AddSelectedDataItem = new RelayCommand<ConfigurationDataItem>(OnAddItemCommandClicked);
+            ItemsCollection = _dataService.GetItemsCollection(configurationName, globalSettings.Get("BasePath").ToString());
         }
-        
-        //private void OnAddItemCommandClicked(ConfigurationDataItem dataitem)
-        //{
-        //    ////TODO
-          
-        //    //Add Selected item to SelectedItems List
-        //    SelectedItemsCollection.Add(dataitem);
-        //    //Copy Item Folder to the correct Project Folder (so that we can make changes to the configuration path
-        //    //TODO 
-        //    //Send Message to Unity - To spone item in to Scene
-             
+         
 
-        //}
-
-        public void AddItemToSelectedCollection(string itemName,string itemPath)
+        public void AddItemToSelectedCollection(PlacedDataItem placedItem)// string itemName,string itemPath)
         {
-            var placedItem = new PlacedDataItem(itemName, itemPath);
-            _placedItemsDictionary.Add(itemName, placedItem);
+           // var placedItem = new PlacedDataItem(itemName, itemPath);
+            _placedItemsDictionary.Add(placedItem.ItemName, placedItem);
             //Add Selected item to SelectedItems List
             _placedItemsCollection.Add(placedItem);
 
@@ -84,7 +71,25 @@ namespace Smartest.ViewModels.BaseViewModels
             //TODO
         }
 
-        //    public ICommand AddSelectedDataItem { get; private set; }
-
+      
     }
 }
+
+
+//    AddSelectedDataItem = new RelayCommand<ConfigurationDataItem>(OnAddItemCommandClicked);
+
+//private void OnAddItemCommandClicked(ConfigurationDataItem dataitem)
+//{
+//    ////TODO
+
+//    //Add Selected item to SelectedItems List
+//    SelectedItemsCollection.Add(dataitem);
+//    //Copy Item Folder to the correct Project Folder (so that we can make changes to the configuration path
+//    //TODO 
+//    //Send Message to Unity - To spone item in to Scene
+
+
+//}
+
+
+//    public ICommand AddSelectedDataItem { get; private set; }

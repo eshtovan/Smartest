@@ -106,11 +106,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Infrastructure\Interfaces\INavigation.cs" />
     <Compile Include="Infrastructure\Objects\ConfigurationDataItem.cs" />
     <Compile Include="Infrastructure\Interfaces\IGlobalConfigService.cs" />
+    <Compile Include="Infrastructure\Objects\Enums.cs" />
     <Compile Include="Infrastructure\Objects\PlacedDataItem.cs" />
+    <Compile Include="Models\NavigationManager.cs" />
     <Compile Include="Models\ProjectSettings.cs" />
-    <Compile Include="Infrastructure\GlobalConfigService.cs" />
+    <Compile Include="Models\GlobalConfigService.cs" />
     <Compile Include="Infrastructure\Interfaces\IConfigurationDataService.cs" />
     <Compile Include="Infrastructure\Interfaces\ISettings.cs" />
     <Compile Include="Infrastructure\Resources\Icons\IconsResource.xaml.cs">

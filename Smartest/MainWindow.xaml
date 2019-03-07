@@ -9,7 +9,7 @@
 		mc:Ignorable="d"
         Title="Smartest" Height="450" Width="800" Foreground="White" 
         WindowStartupLocation="CenterScreen"
-        DataContext="{Binding Main, Source={StaticResource ViewModelLocator}}" >
+        DataContext="{Binding VehicleConfigVm, Source={StaticResource ViewModelLocator}}" >
   
     <Grid>
         <Grid Height="70" VerticalAlignment="Top" Background="#FF267FD2" >

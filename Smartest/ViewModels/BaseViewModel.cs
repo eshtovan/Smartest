@@ -18,11 +18,11 @@ namespace Smartest.ViewModels
             base.RaisePropertyChanged(property);
         }
 
-        /// <summary>
-        /// This gives us the ReSharper option to transform an autoproperty into a property with change notification
-        /// Also leverages .net 4.5 callermembername attribute
-        /// </summary>
-        /// <param name="property">name of the property</param>
+        ///// <summary>
+        ///// This gives us the ReSharper option to transform an autoproperty into a property with change notification
+        ///// Also leverages .net 4.5 callermembername attribute
+        ///// </summary>
+        ///// <param name="property">name of the property</param>
         //[NotifyPropertyChangedInvocator]
         //protected override void RaisePropertyChanging([CallerMemberName]string property = "")
         //{
