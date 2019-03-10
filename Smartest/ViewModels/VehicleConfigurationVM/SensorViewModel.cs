@@ -16,6 +16,8 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
 
         public ICommand DeleteSelectedDataItem { get; }
 
+        public ICommand EditSelectedDataItem { get; }
+
         public ICommand ItemDoubleClicked { get; }
 
         public SensorViewModel(IConfigurationDataService dataService, IGlobalConfigService globalSettings,
@@ -26,6 +28,8 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
             _configurationName = "Sensors";
             AddSelectedDataItem = new RelayCommand<ConfigurationDataItem>(OnAddItemCommandClicked);
             DeleteSelectedDataItem = new RelayCommand<PlacedDataItem>(OnDeleteItemCommandClicked);
+
+            EditSelectedDataItem = new RelayCommand<PlacedDataItem>(OnEditItemCommandClicked);
 
             ItemDoubleClicked = new RelayCommand<PlacedDataItem>(OnItemDoubleClickCommandClicked);
              
@@ -78,9 +82,19 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
             //TODO 
             //Send Message to Unity - To spone item in to Scene
             SendUnityCommand();
-        } 
+        }
 
         #endregion
 
+
+        private void OnEditItemCommandClicked(PlacedDataItem dataItem)
+        {
+            //var itemNameTodelete = _dataService.DeleteConfigurationAndRemoveFromList(dataItem);
+
+            //RemoveItemToSelectedCollection(itemNameTodelete);
+            ////TODO 
+            ////Send Message to Unity - To spone item in to Scene
+            //SendUnityCommand();
+        }
     }
 }

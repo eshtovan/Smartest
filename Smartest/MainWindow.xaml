@@ -7,7 +7,7 @@
         xmlns:VehicleConfiguration="clr-namespace:Smartest.Views.VehicleConfiguration" 
         xmlns:ViewModels="clr-namespace:Smartest.ViewModels" 
 		mc:Ignorable="d"
-        Title="Smartest" Height="450" Width="800" Foreground="White" 
+        Title="Smartest" Height="800" Width="1200" Foreground="White" 
         WindowStartupLocation="CenterScreen"
         DataContext="{Binding VehicleConfigVm, Source={StaticResource ViewModelLocator}}" >
   

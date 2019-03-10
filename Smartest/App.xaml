@@ -32,10 +32,11 @@
         <BitmapImage x:Key="Backwards" UriSource="Infrastructure/Resources/Icons/backwards.png" />
         <BitmapImage x:Key="Controller" UriSource="Infrastructure/Resources/Icons/Controller.png" />
         <BitmapImage x:Key="Terrains" UriSource="Infrastructure/Resources/Icons/terrain.png" />
+        <BitmapImage x:Key="EditImg" UriSource="Infrastructure/Resources/Icons/edit2.png" />
 
 
 
-        <BitmapImage x:Key="TerrainIcon" UriSource="/Infrastructure/Resources/Icons/terrain.png" />
+<BitmapImage x:Key="TerrainIcon" UriSource="/Infrastructure/Resources/Icons/terrain.png" />
         <BitmapImage x:Key="SensorIcon" UriSource="/Infrastructure/Resources/Icons/sensor.png" />
         <BitmapImage x:Key="BracketIcon" UriSource="/Infrastructure/Resources/Icons/bracket.png" />
         <BitmapImage x:Key="Logo" UriSource="/Infrastructure/Resources/Icons/Logo.png" />
