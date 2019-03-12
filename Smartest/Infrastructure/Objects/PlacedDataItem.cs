@@ -31,5 +31,13 @@ namespace Smartest.Infrastructure.Objects
                 ConfigurationPath = configFile;
             }
         }
+
+        public PlacedDataItem(string itemName)
+        {
+            ItemName = itemName;
+            LocationPath = null;
+            IsConfigurationExists = false;
+
+        }
     }
 }

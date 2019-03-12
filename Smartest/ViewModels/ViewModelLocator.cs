@@ -19,12 +19,19 @@ namespace Smartest.ViewModels
             SimpleIoc.Default.Register<IGlobalConfigService, GlobalConfigService>();
             SimpleIoc.Default.Register<INavigation, NavigationManager>();
 
+
             // View Models
             SimpleIoc.Default.Register<ControllerViewModel>();
             SimpleIoc.Default.Register<StandsViewModel>();
             SimpleIoc.Default.Register<SensorViewModel>();
-            SimpleIoc.Default.Register<ConfigurationViewModel>();
-            
+          
+            //https://stackoverflow.com/questions/9342294/simpleioc-can-it-provide-new-instance-each-time-required
+            //SimpleIoc.Default.Register<BaseViewModel>(() => new ConfigurationViewModel());
+         
+           // SimpleIoc.Default.Register<ConfigurationViewModel>();
+
+            SimpleIoc.Default.Register(() => new ConfigurationViewModel(SimpleIoc.Default.GetInstance<INavigation>()),true);
+             
             SimpleIoc.Default.Register<MainWindowVm>();
           
             
