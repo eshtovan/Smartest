@@ -51,36 +51,36 @@ public class GameManager : MonoBehaviour
 
     }
 
-    void CreateObject(string args)
-    {
-        string[] commandParams= args.Split(',');
+    //void CreateObject(string args)
+    //{
+    //    string[] commandParams= args.Split(',');
 
-    }
+    //}
 
-    CreateObject(Category, SensorType name, ProjectPath, Params)
-    {
-        "CreateObject,'asdasdad:asdasda;asasdasdasd;asdasdsa'"
-    }
+    //void CreateObject(Category, SensorType name, ProjectPath, Params)
+    //{
+    //    "CreateObject,'asdasdad:asdasda;asasdasdasd;asdasdsa'"
+    //}
 
-    RemoveObject(Category, Name, ProjectPath)
-    {
+    //void RemoveObject(Category, Name, ProjectPath)
+    //{
 
-    }
+    //}
 
-    RenameObject(Category, OldName, NewName, ProjectPath, Params)//– תשמש לשינוי שם של אובייקט ביוניטי
-    {
+    //void RenameObject(Category, OldName, NewName, ProjectPath, Params)//– תשמש לשינוי שם של אובייקט ביוניטי
+    //{
 
-    }
+    //}
 
-    SetDisplayObject(Category, Name, ProjectPath) //– פונקציה שתשתמש לשינוי סביבות וכלי רכב במסך היוניטי
-    {
+    //SetDisplayObject(Category, Name, ProjectPath) //– פונקציה שתשתמש לשינוי סביבות וכלי רכב במסך היוניטי
+    //{
 
-    }
+    //}
 
-    GetAllObjects(ProjectPath, Category)  // – תשמש לצורך הבאת כל הנתונים לממשק ה- WPF לצורך הצגה למשתמש של המצב הנוכחי(תחזיר רשימה של אובייקטים צריך לסגור את הסוגים שלהם)
-    {
+    //void GetAllObjects(ProjectPath, Category)  // – תשמש לצורך הבאת כל הנתונים לממשק ה- WPF לצורך הצגה למשתמש של המצב הנוכחי(תחזיר רשימה של אובייקטים צריך לסגור את הסוגים שלהם)
+    //{
 
-    }
+    //}
    
 }
 
