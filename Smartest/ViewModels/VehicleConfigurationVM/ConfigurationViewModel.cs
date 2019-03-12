@@ -50,7 +50,7 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
             _navigation = navigation;
 
             GoBackToItemsList = new RelayCommand(GoBackToItemsListCommand);
-
+             
             //var rowDef = new RowDefinition { Height = new GridLength(25) };
             //// _myGrid.RowDefinitions.Add(rowDef);
 
