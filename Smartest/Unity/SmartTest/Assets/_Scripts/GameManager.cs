@@ -18,10 +18,12 @@ public class Sensor
     public GameObject Go;
 
 }
+
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public Sensor[] sensors;
+
     void Start()
     {
 
@@ -41,12 +43,50 @@ public class GameManager : MonoBehaviour
         {
             if (sen.SensorType == sensorType)
             {
-              
-                GameObject newSensor = Instantiate(sen.Go,parent.transform);
+
+                GameObject newSensor = Instantiate(sen.Go, parent.transform);
             }
         }
 
+
     }
 
+    void CreateObject(string args)
+    {
+        string[] commandParams= args.Split(',');
 
+    }
+
+    CreateObject(Category, SensorType name, ProjectPath, Params)
+    {
+        "CreateObject,'asdasdad:asdasda;asasdasdasd;asdasdsa'"
+    }
+
+    RemoveObject(Category, Name, ProjectPath)
+    {
+
+    }
+
+    RenameObject(Category, OldName, NewName, ProjectPath, Params)//– תשמש לשינוי שם של אובייקט ביוניטי
+    {
+
+    }
+
+    SetDisplayObject(Category, Name, ProjectPath) //– פונקציה שתשתמש לשינוי סביבות וכלי רכב במסך היוניטי
+    {
+
+    }
+
+    GetAllObjects(ProjectPath, Category)  // – תשמש לצורך הבאת כל הנתונים לממשק ה- WPF לצורך הצגה למשתמש של המצב הנוכחי(תחזיר רשימה של אובייקטים צריך לסגור את הסוגים שלהם)
+    {
+
+    }
+   
 }
+
+
+
+
+
+
+

@@ -109,6 +109,7 @@
     <Compile Include="Infrastructure\Interfaces\INavigation.cs" />
     <Compile Include="Infrastructure\Objects\ConfigurationDataItem.cs" />
     <Compile Include="Infrastructure\Interfaces\IGlobalConfigService.cs" />
+    <Compile Include="Infrastructure\Objects\ConfigurationItem.cs" />
     <Compile Include="Infrastructure\Objects\Enums.cs" />
     <Compile Include="Infrastructure\Objects\PlacedDataItem.cs" />
     <Compile Include="Models\NavigationManager.cs" />

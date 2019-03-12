@@ -32,14 +32,21 @@
             </Button>
             <Label Content="{Binding ItemName}"></Label>
         </WrapPanel>
-        <Grid Name="MyGrid" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top">
+
+        <StackPanel Grid.Row="1">
+            <Label Height="25"  Content ="Configuration"  FontWeight ="Bold"/>
+
+            <Grid Name="MyGrid"  HorizontalAlignment="Left" VerticalAlignment="Top" DataContext="{Binding MySampleGrid}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-        </Grid>
+                <Label Grid.Column="0" Height="25" Content="{Binding Key}"/>
+                <TextBox Width="150px" Height="25" Margin="5,0,0,0"  Grid.Column="1" Text="{Binding Value}"/>
 
+        </Grid>
+        </StackPanel>
     </Grid>
    
 </UserControl>
