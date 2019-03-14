@@ -19,6 +19,45 @@
         </Style>
 
         <BooleanToVisibilityConverter x:Key="Converter" />
+
+        <!--<DataTemplate x:Key="ModelTemplate" DataType="{x:Type vm:DataModel}">
+
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock FontWeight="Bold" Text="{Binding ModelLabel}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                <TextBox Width="115" Height="25" Grid.Column="2" Text="{Binding ModelValue}" />
+            </Grid>
+
+        </DataTemplate>-->
+        <Style TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+        
+                        <DockPanel>
+                            <TextBlock DockPanel.Dock="Left" Text="{Binding Key}" HorizontalAlignment="Left"/>
+                            <TextBox DockPanel.Dock="Right" Text="{Binding Value}" HorizontalAlignment="Right" Width="100"/>
+                        </DockPanel>
+                        <!--
+                        Name="MyTextBox" 
+                         FocusManager.FocusedElement="{Binding ElementName=MyTextBox}"
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Selector.IsSelected" Value="True">
+                                <Setter TargetName="MyTextBox" Property="FocusManager.FocusedElement" Value="{Binding ElementName=MyTextBox}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter TargetName="MyTextBox" Property="FocusManager.FocusedElement" Value="{Binding ElementName=MyTextBox}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>-->
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style> 
     </UserControl.Resources>
 
     <Grid>
@@ -34,18 +73,9 @@
         </WrapPanel>
 
         <StackPanel Grid.Row="1">
-            <Label Height="25"  Content ="Configuration"  FontWeight ="Bold"/>
-
-            <Grid Name="MyGrid"  HorizontalAlignment="Left" VerticalAlignment="Top" DataContext="{Binding MySampleGrid}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-                <Label Grid.Column="0" Height="25" Content="{Binding Key}"/>
-                <TextBox Width="150px" Height="25" Margin="5,0,0,0"  Grid.Column="1" Text="{Binding Value}"/>
-
-        </Grid>
+            <Label Height="25"  Content ="Configuration"  FontWeight ="Bold"/> 
+            <ListBox  HorizontalAlignment="Left" VerticalAlignment="Top" Width="250" Height="250" ItemsSource="{Binding MySampleGrid}" />
+          <!--Button Save Here? -->
         </StackPanel>
     </Grid>
    

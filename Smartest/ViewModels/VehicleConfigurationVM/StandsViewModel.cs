@@ -27,11 +27,9 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
             AddSelectedDataItem = new RelayCommand<ConfigurationDataItem>(OnAddItemCommandClicked);
             DeleteSelectedDataItem = new RelayCommand<PlacedDataItem>(OnDeleteItemCommandClicked);
 
-            ItemDoubleClicked = new RelayCommand<PlacedDataItem>(OnItemDoubleClickCommandClicked);
-             
+            ItemDoubleClicked = new RelayCommand<PlacedDataItem>(OnItemDoubleClickCommandClicked); 
             // TODO Load  _addedItemsDictionary on startup
-        }
-
+        } 
         private void OnItemDoubleClickCommandClicked(PlacedDataItem placedItem)
         {
             ProjectsData.CurrentDataItem = placedItem;

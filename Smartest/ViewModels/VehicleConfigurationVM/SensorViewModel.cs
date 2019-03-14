@@ -76,9 +76,9 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
         #region Remove Item From List
         private void OnDeleteItemCommandClicked(PlacedDataItem dataItem)
         {
-           var itemNameTodelete = _dataService.DeleteConfigurationAndRemoveFromList(dataItem);
+           var itemNameDelete = _dataService.DeleteConfigurationAndRemoveFromList(dataItem);
 
-           RemoveItemToSelectedCollection(itemNameTodelete);
+           RemoveItemToSelectedCollection(itemNameDelete);
             //TODO 
             //Send Message to Unity - To spone item in to Scene
             SendUnityCommand();

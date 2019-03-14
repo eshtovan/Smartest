@@ -50,16 +50,22 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
             _navigation = navigation;
 
             GoBackToItemsList = new RelayCommand(GoBackToItemsListCommand);
-             
+
             //var rowDef = new RowDefinition { Height = new GridLength(25) };
             //// _myGrid.RowDefinitions.Add(rowDef);
 
             //var lblHeader = new Label { Content = "Configuration", FontWeight = FontWeights.Bold };
 
+            //TODO Load ProjectsData.CurrentDataItem
+
             //rowDef.DataContext = lblHeader;
 
-            //var item = new ConfigurationItem("This is a test Name","123");
-            //MySampleGrid.Add(item);
+            //var item = new ConfigurationItem("This is a test Name", "123");
+            //MySampleGrid.Add(item); 
+
+            //var item1 = new ConfigurationItem("Test Name", "6757");
+            //MySampleGrid.Add(item1);
+
 
         }
 
@@ -73,7 +79,7 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
 
 
         //     BuildPage(ProjectsData.CurrentDataItem.ConfigurationPath);
-             
+
 
         //}
 

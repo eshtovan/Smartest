@@ -8,7 +8,6 @@ namespace Smartest.ViewModels.BaseViewModels
 {
     public class ItemsSourceBaseViewModel : BaseViewModel
     {
-        private readonly IConfigurationDataService _dataService;
         private readonly IGlobalConfigService _globalSettings;
         private string _configurationName;
         private ObservableCollection<ConfigurationDataItem> _itemsCollection = new ObservableCollection<ConfigurationDataItem>();
@@ -37,11 +36,10 @@ namespace Smartest.ViewModels.BaseViewModels
         }
         public ItemsSourceBaseViewModel(IConfigurationDataService dataService,string configurationName, IGlobalConfigService globalSettings)
         {
-            _dataService = dataService;
             _configurationName = configurationName;
             _globalSettings = globalSettings;
             //Get according to the configurationName the wanted items
-            ItemsCollection = _dataService.GetItemsCollection(configurationName, globalSettings.Get("BasePath").ToString());
+            ItemsCollection = dataService.GetItemsCollection(configurationName, globalSettings.Get("BasePath").ToString());
         }
          
 

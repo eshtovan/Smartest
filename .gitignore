@@ -260,3 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 /Smartest/Unity/SmartTest
+/Unity/SmartTest/Library/ShaderCache
