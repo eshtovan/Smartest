@@ -6,7 +6,8 @@
         public enum Pages
         {
             SensorVm,
-            ConfigurationVm
+            ConfigurationVm,
+            ControllerVm
         };
     }
 }

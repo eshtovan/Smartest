@@ -10,7 +10,7 @@ namespace Smartest.Infrastructure.Interfaces
     public interface INavigation
     {
         void GoBack();
-        void GoToPage(Enums.Pages page);
+        void GoToPage(string fromPage, Enums.Pages page);
          
     }
 }

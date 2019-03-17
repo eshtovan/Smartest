@@ -8,35 +8,118 @@ using Smartest.Infrastructure.Interfaces;
 using Smartest.Infrastructure.Objects;
 using Smartest.Utilities;
 using Smartest.ViewModels;
+using Smartest.ViewModels.VehicleConfigurationVM;
 
 namespace Smartest.Models
 {
     public class NavigationManager :INavigation
     {
-        public void GoBack()
+        public void GoBack(string fromPage)
         {
-            if(ProjectsData.LastPage!=null)
-                ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.CurrentPage = ProjectsData.LastPage;//((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.SensorVm;
+            if (ProjectsData.LastPage != null)
+            {
+                //ProjectsData.LastPage
+                switch (fromPage)
+                {
+                    case "Sensors":
+                        ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm
+                            .CurrentSensorsPage =
+                            ProjectsData
+                                .LastPage; //((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.SensorVm;
+                        break;
+
+                    case "Controllers":
+                        ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm
+                            .CurrentControllersPage =
+                            ProjectsData
+                                .LastPage; //((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.SensorVm;
+                        break;
+                } 
+            }
+
+
         }
 
-        public void GoToPage(Enums.Pages page)
+        public void GoBack()
         {
-            SetLastPage();
-            switch (page)
+            if (ProjectsData.LastPage != null)
             {
-                case Enums.Pages.ConfigurationVm:
-                    ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.CurrentPage = ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.ConfigurationVm;
-                    break;
-
-                case Enums.Pages.SensorVm:
-                    ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.CurrentPage = ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.SensorVm;
-                    break;
+                if (ProjectsData.LastPage is SensorViewModel)
+                {
+                    ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm
+                        .CurrentSensorsPage =
+                        ProjectsData
+                            .LastPage;
+                }
+                if (ProjectsData.LastPage is ControllerViewModel)
+                {
+                    ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm
+                        .CurrentControllersPage =
+                        ProjectsData
+                            .LastPage;
+                } 
             }
         }
 
-        private void SetLastPage()
+        public void GoToPage(string fromPage, Enums.Pages page)
         {
-            ProjectsData.LastPage = ((ViewModelLocator) Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.CurrentPage;
+            SetLastPage(fromPage);
+
+            switch (fromPage)
+            {
+                case "Sensors":
+                    switch (page)
+                    {
+                        case Enums.Pages.ConfigurationVm:
+                            ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.CurrentSensorsPage = ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.ConfigurationVm;
+                            break;
+
+                        case Enums.Pages.ControllerVm:
+                            ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.CurrentSensorsPage = ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.ControllerVm;
+                            break;
+
+                        case Enums.Pages.SensorVm:
+                            ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.CurrentSensorsPage = ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.SensorVm;
+                            break;
+                    }
+                    break;
+
+                case "Controllers":
+                    switch (page)
+                    {
+                        case Enums.Pages.ConfigurationVm:
+                            ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.CurrentControllersPage = ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.ConfigurationVm;
+                            break;
+
+                        case Enums.Pages.ControllerVm:
+                            ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.CurrentControllersPage = ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.ControllerVm;
+                            break;
+
+                        case Enums.Pages.SensorVm:
+                            ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.CurrentControllersPage = ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.SensorVm;
+                            break;
+                    }
+                    break;
+            }
+
+        }
+
+        private void SetLastPage(string fromPage)
+        {
+            switch (fromPage)
+            {
+                case "Sensors":
+                    ProjectsData.LastPage = ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.CurrentSensorsPage;
+
+                    break;
+
+                case "Controllers":
+                    ProjectsData.LastPage = ((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.CurrentControllersPage;
+
+                    break;
+            }
+
+
         }
     }
 }

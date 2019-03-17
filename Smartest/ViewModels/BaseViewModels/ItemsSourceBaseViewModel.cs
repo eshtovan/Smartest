@@ -9,7 +9,7 @@ namespace Smartest.ViewModels.BaseViewModels
     public class ItemsSourceBaseViewModel : BaseViewModel
     {
         private readonly IGlobalConfigService _globalSettings;
-        private string _configurationName;
+       // private string _configurationName;
         private ObservableCollection<ConfigurationDataItem> _itemsCollection = new ObservableCollection<ConfigurationDataItem>();
 
         private ObservableCollection<PlacedDataItem> _placedItemsCollection = new ObservableCollection<PlacedDataItem>();
@@ -36,12 +36,20 @@ namespace Smartest.ViewModels.BaseViewModels
         }
         public ItemsSourceBaseViewModel(IConfigurationDataService dataService,string configurationName, IGlobalConfigService globalSettings)
         {
-            _configurationName = configurationName;
+           // _configurationName = configurationName;
             _globalSettings = globalSettings;
             //Get according to the configurationName the wanted items
             ItemsCollection = dataService.GetItemsCollection(configurationName, globalSettings.Get("BasePath").ToString());
         }
-         
+
+
+        //public ItemsSourceBaseViewModel(IConfigurationDataService dataService, IGlobalConfigService globalSettings)
+        //{
+        //    // _configurationName = configurationName;
+        //    _globalSettings = globalSettings;
+        //    //Get according to the configurationName the wanted items
+        //    ItemsCollection = dataService.GetItemsCollection(ProjectsData.CurrentConfigurationView, globalSettings.Get("BasePath").ToString());
+        //}
 
         public void AddItemToSelectedCollection(PlacedDataItem placedItem)
         { 

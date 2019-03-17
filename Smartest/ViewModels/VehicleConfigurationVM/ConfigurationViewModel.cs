@@ -92,6 +92,7 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
             // TODO also get first configuration path in order to restore defaults
             // BuildPage(configInputPath);
             //TODO
+
             _navigation.GoBack();
 
             //((ViewModelLocator) Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.CurrentPage = ProjectsData.LastPage;//((ViewModelLocator)Application.Current.Resources["ViewModelLocator"]).VehicleConfigVm.SensorVm;

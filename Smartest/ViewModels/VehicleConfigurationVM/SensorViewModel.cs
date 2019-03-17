@@ -43,7 +43,7 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
             //TODO Check if config file exists
             if (placedItem.IsConfigurationExists)
             { 
-                _navigationManager.GoToPage(Enums.Pages.ConfigurationVm);
+                _navigationManager.GoToPage("Sensors", Enums.Pages.ConfigurationVm);
             }
 
         }
@@ -63,7 +63,7 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
             //Switch View to configuration if exists 
             if (dataItem.IsConfigurationExist)
             { 
-                _navigationManager.GoToPage(Enums.Pages.ConfigurationVm);
+                _navigationManager.GoToPage("Sensors", Enums.Pages.ConfigurationVm);
             }
 
         }

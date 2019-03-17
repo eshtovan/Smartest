@@ -31,31 +31,78 @@ namespace Smartest.ViewModels
         }
 
 
-        private object _currentPage;
+        private object _currentSensorsPage;
 
-        public object CurrentPage
+        public object CurrentSensorsPage
         {
             get
             {
-                if (_currentPage == null)
-                    _currentPage = ServiceLocator.Current.GetInstance<SensorViewModel>();
+                if (_currentSensorsPage == null)
+                    _currentSensorsPage = ServiceLocator.Current.GetInstance<SensorViewModel>();
 
-                return _currentPage;
+                return _currentSensorsPage;
             }
             set
             {
-                _currentPage = value;
+                _currentSensorsPage = value;
                 RaisePropertyChanged();
             }
         }
 
-        public StandsViewModel StandsVm => ServiceLocator.Current.GetInstance<StandsViewModel>();
+        public StandsViewModel StandsVm
+        {
+            get
+            {
+             //   ProjectsData.CurrentConfigurationView = "Stands";
+                return ServiceLocator.Current.GetInstance<StandsViewModel>();
+            }
+        }
+        
+        public SensorViewModel SensorVm
+        {
+            get
+            {
+            //    ProjectsData.CurrentConfigurationView = "Sensors";
+                return ServiceLocator.Current.GetInstance<SensorViewModel>();
+            }
+        }
 
 
-        public SensorViewModel SensorVm => ServiceLocator.Current.GetInstance<SensorViewModel>();
+        private object _currentControllersPage;
 
-        public ControllerViewModel ControllerVm => ServiceLocator.Current.GetInstance<ControllerViewModel>();
+        public object CurrentControllersPage
+        {
+            get
+            {
+                if (_currentControllersPage == null)
+                    _currentControllersPage = ServiceLocator.Current.GetInstance<ControllerViewModel>();
 
-        public ConfigurationViewModel ConfigurationVm => ServiceLocator.Current.GetInstance<ConfigurationViewModel>();
+                return _currentControllersPage;
+            }
+            set
+            {
+                _currentControllersPage = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public ControllerViewModel ControllerVm
+        {
+            get
+            {
+              //  ProjectsData.CurrentConfigurationView = "Controllers";
+                return ServiceLocator.Current.GetInstance<ControllerViewModel>();
+            }
+        }
+
+        public ConfigurationViewModel ConfigurationVm 
+        {
+            get
+            {
+              //  ProjectsData.CurrentConfigurationView = "Configurations";
+                return ServiceLocator.Current.GetInstance<ConfigurationViewModel>();
+            }
+        }
+    
     }
 }

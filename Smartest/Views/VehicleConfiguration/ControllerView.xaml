@@ -5,10 +5,84 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Smartest.Views.VehicleConfiguration"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+             Height="450" Width="250"
             DataContext="{Binding ControllerVm, Source={StaticResource ViewModelLocator}}">
 
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}" x:Key="ImageButtonStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ContentPresenter/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Selected Items:" FontSize="24" FontWeight="Bold" VerticalAlignment="Top"  HorizontalAlignment="Left" TextWrapping="Wrap"/>
+        <ListBox Grid.Row="1" ItemsSource="{Binding PlacedItemsCollection}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding ItemName}">
+                            <TextBlock.InputBindings>
+                                <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}}, Path=DataContext.ItemDoubleClicked}" CommandParameter="{Binding}"/>
+                            </TextBlock.InputBindings>
+                        </TextBlock>
+                        <WrapPanel Grid.Column="1">
+                            <Button Style="{StaticResource ImageButtonStyle}" Margin="0,0,5,0" Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}}, Path=DataContext.DeleteSelectedDataItem}" CommandParameter="{Binding}">
+                                <Image Width="15px" Height="15px" Source="{StaticResource DeleteImg}"/>
+                            </Button>
+                            <Button Style="{StaticResource ImageButtonStyle}"  Margin="0,0,5,0" Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}}, Path=DataContext.EditSelectedDataItem}" CommandParameter="{Binding}">
+                                <Image Width="15px" Height="15px" Source="{StaticResource EditImg}"/>
+                            </Button>
+
+                        </WrapPanel>
+
+                    </Grid>
+
+
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <!--<ListBox>
+            <ListBoxItem FontWeight="Bold" FontSize="14" Margin="0,5">Selected Sensors</ListBoxItem>
+            <ListBoxItem>Sensor 1</ListBoxItem>
+            <ListBoxItem>Sensor 2</ListBoxItem>
+            <ListBoxItem>Sensor 3</ListBoxItem>
+            <ListBoxItem>Sensor 4</ListBoxItem>
+        </ListBox>-->
+        <GroupBox Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Header="New Sensor" >
+            <ItemsControl x:Name="ItemsStack"  ItemsSource="{Binding ItemsCollection}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="3" >
+                            <StackPanel.InputBindings>
+                                <MouseBinding MouseAction="LeftClick" Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}}, Path=DataContext.AddSelectedDataItem}"
+                                      CommandParameter="{Binding}"/>
+                            </StackPanel.InputBindings>
+
+                            <Image Source="{Binding ItemIconPath}" Width="30" Height="30"/>
+                            <TextBlock Text="{Binding ItemName}" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </GroupBox>
     </Grid>
 </UserControl>

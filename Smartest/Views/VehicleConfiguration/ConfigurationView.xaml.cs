@@ -27,5 +27,6 @@ namespace Smartest.Views.VehicleConfiguration
             InitializeComponent();
           // this.DataContext = new ConfigurationViewModel(MyGrid);
         }
+         
     }
 }

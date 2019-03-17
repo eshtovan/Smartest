@@ -76,9 +76,9 @@
                         <TextBlock Text="Terrains" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </TabItem.Header>
-                <ContentControl Content="{Binding ControllerVm}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <!--<ContentControl Content="{Binding EnviromentVm}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
 
-                </ContentControl>
+                </ContentControl>-->
             </TabItem>
 
             <!--Sensors-->
@@ -89,7 +89,7 @@
                         <TextBlock Text="Sensors"  HorizontalAlignment="Center"/>
                     </StackPanel>
                 </TabItem.Header>
-                <ContentControl Content="{Binding CurrentPage}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <ContentControl Content="{Binding CurrentSensorsPage}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
                                             <!--was SensorVm-->
                    
                 </ContentControl>
@@ -116,7 +116,7 @@
                         <TextBlock Text="Controller"  HorizontalAlignment="Center"/>
                     </StackPanel>
                 </TabItem.Header>
-                <ContentControl Content="{Binding ControllerVm}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <ContentControl Content="{Binding CurrentControllersPage}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
 
                 </ContentControl>
             </TabItem>
