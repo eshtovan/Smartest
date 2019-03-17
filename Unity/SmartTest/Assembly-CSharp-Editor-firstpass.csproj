@@ -69,27 +69,6 @@
     <Compile Include="Assets\Plugins\Sirenix\Odin Inspector\Scripts\Editor\Vector2IntMinMaxAttributeDrawer.cs" />
     <Compile Include="Assets\Plugins\Sirenix\Odin Inspector\Scripts\Editor\VectorIntDrawers.cs" />
     <Compile Include="Assets\Plugins\Sirenix\Odin Inspector\Scripts\Editor\VectorIntPropertyResolvers.cs" />
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/UnityProjects/smartestIAI/Smartest/Unity/SmartTest/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/UnityProjects/smartestIAI/Smartest/Unity/SmartTest/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/UnityProjects/smartestIAI/Smartest/Unity/SmartTest/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Editor">
-      <HintPath>C:/UnityProjects/smartestIAI/Smartest/Unity/SmartTest/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>C:/UnityProjects/smartestIAI/Smartest/Unity/SmartTest/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/UnityProjects/smartestIAI/Smartest/Unity/SmartTest/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>C:/UnityProjects/smartestIAI/Smartest/Unity/SmartTest/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
     </Reference>
@@ -340,52 +319,52 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="ConsolePro.Editor">
-      <HintPath>C:/UnityProjects/smartestIAI/Smartest/Unity/SmartTest/Assets/ConsolePro/Editor/ConsolePro.Editor.dll</HintPath>
+      <HintPath>C:/UnityProjects/smartestIAI/Unity/SmartTest/Assets/ConsolePro/Editor/ConsolePro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="RealtimeGrinderDemo">
-      <HintPath>C:/UnityProjects/smartestIAI/Smartest/Unity/SmartTest/Assets/iS.CentralDispatch/Examples/Example Assets/Example 1/RealtimeGrinderDemo.dll</HintPath>
+      <HintPath>C:/UnityProjects/smartestIAI/Unity/SmartTest/Assets/iS.CentralDispatch/Examples/Example Assets/Example 1/RealtimeGrinderDemo.dll</HintPath>
     </Reference>
     <Reference Include="websocket-sharp">
-      <HintPath>C:/UnityProjects/smartestIAI/Smartest/Unity/SmartTest/Assets/Plugins/websocket-sharp.dll</HintPath>
+      <HintPath>C:/UnityProjects/smartestIAI/Unity/SmartTest/Assets/Plugins/websocket-sharp.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.OdinInspector.Attributes">
-      <HintPath>C:/UnityProjects/smartestIAI/Smartest/Unity/SmartTest/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
+      <HintPath>C:/UnityProjects/smartestIAI/Unity/SmartTest/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.OdinInspector.Editor">
-      <HintPath>C:/UnityProjects/smartestIAI/Smartest/Unity/SmartTest/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll</HintPath>
+      <HintPath>C:/UnityProjects/smartestIAI/Unity/SmartTest/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Serialization.Config">
-      <HintPath>C:/UnityProjects/smartestIAI/Smartest/Unity/SmartTest/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.dll</HintPath>
+      <HintPath>C:/UnityProjects/smartestIAI/Unity/SmartTest/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Serialization">
-      <HintPath>C:/UnityProjects/smartestIAI/Smartest/Unity/SmartTest/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.dll</HintPath>
+      <HintPath>C:/UnityProjects/smartestIAI/Unity/SmartTest/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Utilities">
-      <HintPath>C:/UnityProjects/smartestIAI/Smartest/Unity/SmartTest/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.dll</HintPath>
+      <HintPath>C:/UnityProjects/smartestIAI/Unity/SmartTest/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Utilities.Editor">
-      <HintPath>C:/UnityProjects/smartestIAI/Smartest/Unity/SmartTest/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll</HintPath>
+      <HintPath>C:/UnityProjects/smartestIAI/Unity/SmartTest/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
-      <HintPath>C:/UnityProjects/smartestIAI/Smartest/Unity/SmartTest/Library/PackageCache/com.unity.ads@2.3.1/Editor/UnityEditor.Advertisements.dll</HintPath>
+      <HintPath>C:/UnityProjects/smartestIAI/Unity/SmartTest/Library/PackageCache/com.unity.ads@2.3.1/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements">
-      <HintPath>C:/UnityProjects/smartestIAI/Smartest/Unity/SmartTest/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
+      <HintPath>C:/UnityProjects/smartestIAI/Unity/SmartTest/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements.Editor">
-      <HintPath>C:/UnityProjects/smartestIAI/Smartest/Unity/SmartTest/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
+      <HintPath>C:/UnityProjects/smartestIAI/Unity/SmartTest/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>C:/UnityProjects/smartestIAI/Smartest/Unity/SmartTest/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>C:/UnityProjects/smartestIAI/Unity/SmartTest/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>C:/UnityProjects/smartestIAI/Smartest/Unity/SmartTest/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>C:/UnityProjects/smartestIAI/Unity/SmartTest/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>C:/UnityProjects/smartestIAI/Smartest/Unity/SmartTest/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>C:/UnityProjects/smartestIAI/Unity/SmartTest/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
-      <HintPath>C:/UnityProjects/smartestIAI/Smartest/Unity/SmartTest/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
+      <HintPath>C:/UnityProjects/smartestIAI/Unity/SmartTest/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
