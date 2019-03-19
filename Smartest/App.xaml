@@ -34,6 +34,9 @@
         <BitmapImage x:Key="Terrains" UriSource="Infrastructure/Resources/Icons/terrain.png" />
         <BitmapImage x:Key="EditImg" UriSource="Infrastructure/Resources/Icons/edit2.png" />
 
+        <BitmapImage x:Key="SaveImg" UriSource="Infrastructure/Resources/Icons/save.png" />
+        <BitmapImage x:Key="UndoImg" UriSource="Infrastructure/Resources/Icons/undo.png" />
+
 
 
 <BitmapImage x:Key="TerrainIcon" UriSource="/Infrastructure/Resources/Icons/terrain.png" />

@@ -263,5 +263,11 @@
   <ItemGroup>
     <Resource Include="Infrastructure\Resources\Icons\edit2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Infrastructure\Resources\Icons\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Infrastructure\Resources\Icons\undo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

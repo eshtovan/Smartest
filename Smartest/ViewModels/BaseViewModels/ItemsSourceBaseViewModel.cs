@@ -8,8 +8,7 @@ namespace Smartest.ViewModels.BaseViewModels
 {
     public class ItemsSourceBaseViewModel : BaseViewModel
     {
-        private readonly IGlobalConfigService _globalSettings;
-       // private string _configurationName;
+        // private string _configurationName;
         private ObservableCollection<ConfigurationDataItem> _itemsCollection = new ObservableCollection<ConfigurationDataItem>();
 
         private ObservableCollection<PlacedDataItem> _placedItemsCollection = new ObservableCollection<PlacedDataItem>();
@@ -34,23 +33,14 @@ namespace Smartest.ViewModels.BaseViewModels
                 RaisePropertyChanged();
             }
         }
-        public ItemsSourceBaseViewModel(IConfigurationDataService dataService,string configurationName, IGlobalConfigService globalSettings)
+        public ItemsSourceBaseViewModel(IConfigurationDataService dataService,string configurationName)
         {
            // _configurationName = configurationName;
-            _globalSettings = globalSettings;
+           
             //Get according to the configurationName the wanted items
-            ItemsCollection = dataService.GetItemsCollection(configurationName, globalSettings.Get("BasePath").ToString());
+            ItemsCollection = dataService.GetItemsCollection(configurationName);
         }
-
-
-        //public ItemsSourceBaseViewModel(IConfigurationDataService dataService, IGlobalConfigService globalSettings)
-        //{
-        //    // _configurationName = configurationName;
-        //    _globalSettings = globalSettings;
-        //    //Get according to the configurationName the wanted items
-        //    ItemsCollection = dataService.GetItemsCollection(ProjectsData.CurrentConfigurationView, globalSettings.Get("BasePath").ToString());
-        //}
-
+         
         public void AddItemToSelectedCollection(PlacedDataItem placedItem)
         { 
             _placedItemsDictionary.Add(placedItem.ItemName, placedItem);
@@ -62,13 +52,20 @@ namespace Smartest.ViewModels.BaseViewModels
 
         public void RemoveItemToSelectedCollection(string itemName)
         {
-            var placedItem = _placedItemsDictionary[itemName];
-            if (placedItem != null)
+            if (_placedItemsDictionary.ContainsKey(itemName))
             {
+                var placedItem = _placedItemsDictionary[itemName]; 
                 //Remove Selected item to SelectedItems List
                 _placedItemsCollection.Remove(placedItem);
                 _placedItemsDictionary.Remove(itemName);
             } 
+        }
+
+        public void UpdateItemConfigurationFile(string oldItemName,PlacedDataItem dataItem)
+        {
+            dataItem.UpdateConfigFile();
+            _placedItemsDictionary.Remove(oldItemName);
+            _placedItemsDictionary.Add(dataItem.ItemName, dataItem);
         }
 
         public void SendUnityCommand() //Unity Communication Object

@@ -21,11 +21,11 @@ namespace Smartest.Models
         {
             _globalSettings = globalSettings;
         }
-        public ObservableCollection<ConfigurationDataItem> GetItemsCollection(string collectionName,string path)
+        public ObservableCollection<ConfigurationDataItem> GetItemsCollection(string collectionName)
         {
             var configurationCollection = new ObservableCollection<ConfigurationDataItem>();
 
-            var subfolders = FoldersHelper.GetSubFolders(Path.Combine(path, collectionName));
+            var subfolders = FoldersHelper.GetSubFolders(Path.Combine(_globalSettings.Get("ItemsPath").ToString(), collectionName));
 
             foreach(var folder in subfolders)
             {
@@ -40,19 +40,21 @@ namespace Smartest.Models
         public PlacedDataItem CopyConfigurationAndAddToList(ConfigurationDataItem dataItem ,string configurationName)
         {
             var basePath = _globalSettings.Get("BasePath").ToString();
-            var sourcePath = Path.Combine(basePath, configurationName, dataItem.ItemName);
-            var calculateditemName = CalculatedItemName(dataItem);
+            var itemsPath = _globalSettings.Get("ItemsPath").ToString();
+
+            var sourcePath = Path.Combine(itemsPath, configurationName, dataItem.ItemName);
+            var calculatedName = CalculatedItemName(dataItem);
             string destinationPath = "";
             if (FoldersHelper.CheckIfConfigFileExists(sourcePath))
             {
                 destinationPath = Path.Combine(basePath, "Projects", ProjectsData.CurrentProjectName, ProjectsData.CurrentConfigurationName, "Configurations");
 
-                FoldersHelper.CopyFileToLocation(Path.Combine(sourcePath, dataItem.ItemName + ".conf"), destinationPath, calculateditemName + ".conf");
+                FoldersHelper.CopyFileToLocation(Path.Combine(sourcePath, dataItem.ItemName + ".conf"), destinationPath, calculatedName + ".conf");
             }
 
             //return Placeid
             // AddItemToSelectedCollection(calculateditemName, destinationPath); 
-            return new PlacedDataItem(calculateditemName, destinationPath);
+            return new PlacedDataItem(calculatedName, destinationPath);
         }
 
 

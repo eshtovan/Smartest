@@ -18,8 +18,8 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
 
         public ICommand ItemDoubleClicked { get; }
 
-        public StandsViewModel(IConfigurationDataService dataService, IGlobalConfigService globalSettings,
-            INavigation navigationManager) : base(dataService, "Stands", globalSettings)
+        public StandsViewModel(IConfigurationDataService dataService, 
+            INavigation navigationManager) : base(dataService, "Stands")
         {
             _dataService = dataService;
             _navigationManager = navigationManager;

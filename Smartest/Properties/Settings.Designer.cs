@@ -31,5 +31,14 @@ namespace Smartest.Properties {
                 return ((string)(this["BasePath"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("c:\\ItemsFolder")]
+        public string ItemsPath {
+            get {
+                return ((string)(this["ItemsPath"]));
+            }
+        }
     }
 }

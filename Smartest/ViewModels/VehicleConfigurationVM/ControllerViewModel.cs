@@ -26,8 +26,8 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
 
         public ICommand ItemDoubleClicked { get; }
 
-        public ControllerViewModel(IConfigurationDataService dataService, IGlobalConfigService globalSettings,
-            INavigation navigationManager) : base(dataService,"Controllers", globalSettings)
+        public ControllerViewModel(IConfigurationDataService dataService,
+            INavigation navigationManager) : base(dataService,"Controllers")
         {
             _dataService = dataService;
             _navigationManager = navigationManager;

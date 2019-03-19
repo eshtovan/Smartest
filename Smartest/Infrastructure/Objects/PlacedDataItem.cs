@@ -1,17 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Smartest.ViewModels;
 
 namespace Smartest.Infrastructure.Objects
 {
    
 
-    public class PlacedDataItem
+    public class PlacedDataItem : BaseViewModel
     {
-        public string ItemName { get; set; }
+        private string _itemName;
+
+        public string ItemName
+        {
+            get => _itemName;
+            set
+            {
+                _itemName = value;
+                RaisePropertyChanged();
+            }
+        }
 
         public string LocationPath { get; set; }
 
@@ -38,6 +50,21 @@ namespace Smartest.Infrastructure.Objects
             LocationPath = null;
             IsConfigurationExists = false;
 
+        }
+
+        public void UpdateConfigFile()
+        {
+            if (IsConfigurationExists)
+            {
+                var newConfig = Path.Combine(LocationPath, ItemName + ".conf");
+                if (!File.Exists(newConfig))
+                {
+                    File.Move(ConfigurationPath, newConfig);
+                }
+
+                ConfigurationPath = newConfig;
+            }
+         
         }
     }
 }
