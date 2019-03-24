@@ -125,6 +125,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Infrastructure\Interfaces\INavigation.cs" />
+    <Compile Include="Infrastructure\Interfaces\IUnityCommunication.cs" />
     <Compile Include="Infrastructure\Objects\ConfigurationDataItem.cs" />
     <Compile Include="Infrastructure\Interfaces\IGlobalConfigService.cs" />
     <Compile Include="Infrastructure\Objects\ConfigurationItem.cs" />
@@ -139,6 +140,7 @@
       <DependentUpon>IconsResource.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\ConfigurationDataService.cs" />
+    <Compile Include="Models\UnityCommunicationModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Utilities\FoldersHelper.cs" />
     <Compile Include="Utilities\ProjectsData.cs" />

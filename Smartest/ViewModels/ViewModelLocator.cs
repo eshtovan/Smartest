@@ -19,6 +19,7 @@ namespace Smartest.ViewModels
             SimpleIoc.Default.Register<ISettings, ProjectSettings>(); // Not in direct use
             SimpleIoc.Default.Register<IGlobalConfigService, GlobalConfigService>();
             SimpleIoc.Default.Register<INavigation, NavigationManager>();
+            SimpleIoc.Default.Register<IUnityCommunication, UnityCommunicationModel>();
 
 
             // View Models

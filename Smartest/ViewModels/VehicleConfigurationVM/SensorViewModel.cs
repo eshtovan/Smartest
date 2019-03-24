@@ -14,6 +14,7 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
         private string _nameBeforeEdit = "";
         private readonly IConfigurationDataService _dataService; 
         private readonly INavigation _navigationManager;
+        private readonly IUnityCommunication _unityCommunicator;
         private readonly string _configurationName;
         private bool _showEditMode = false;
         private bool _notShowEditMode = true;
@@ -51,10 +52,11 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
 
 
         public SensorViewModel(IConfigurationDataService dataService,
-            INavigation navigationManager) : base(dataService, "Sensors")
+            INavigation navigationManager, IUnityCommunication unityCommunicator) : base(dataService, "Sensors")
         {
             _dataService = dataService;
             _navigationManager = navigationManager;
+            _unityCommunicator = unityCommunicator;
             _configurationName = "Sensors";
             AddSelectedDataItem = new RelayCommand<ConfigurationDataItem>(OnAddItemCommandClicked);
             DeleteSelectedDataItem = new RelayCommand<PlacedDataItem>(OnDeleteItemCommandClicked);
@@ -90,9 +92,9 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
             var placedItem =  _dataService.CopyConfigurationAndAddToList(dataItem, _configurationName);
 
             AddItemToSelectedCollection(placedItem);
-           //TODO 
-           //Send Message to Unity - To spone item in to Scene
-           SendUnityCommand();
+            //TODO 
+            //Send Message to Unity - To spone item in to Scene
+            _unityCommunicator.SendCommand("");
 
             //Switch View to configuration if exists 
             if (dataItem.IsConfigurationExist)
@@ -115,7 +117,8 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
            RemoveItemToSelectedCollection(itemNameDelete);
             //TODO 
             //Send Message to Unity - To spone item in to Scene
-            SendUnityCommand();
+            _unityCommunicator.SendCommand("");
+
         }
 
         #endregion
