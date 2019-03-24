@@ -5,14 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls" 
         xmlns:VehicleConfiguration="clr-namespace:Smartest.Views.VehicleConfiguration" 
-        xmlns:ViewModels="clr-namespace:Smartest.ViewModels" 
-		mc:Ignorable="d"
+        xmlns:ViewModels="clr-namespace:Smartest.ViewModels"
+        xmlns:views="clr-namespace:Smartest.Views"
+        mc:Ignorable="d"
         Title="Smartest" Height="800" Width="1200" Foreground="White" 
         WindowStartupLocation="CenterScreen"
         DataContext="{Binding VehicleConfigVm, Source={StaticResource ViewModelLocator}}" >
   
     <Grid>
-        <Grid Height="70" VerticalAlignment="Top" Background="#FF267FD2" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="Auto"/> 
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Height="70" VerticalAlignment="Top" Background="#FF267FD2" >
             <Image Source="{StaticResource Logo}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5"/>
 
             <Grid HorizontalAlignment="Right" VerticalAlignment="Center">
@@ -47,80 +52,89 @@
 
                 <Button Grid.Column="1" HorizontalAlignment="Right" Height="5" Width="50" Margin="5" Content="Run"/>
 
-                <Button Grid.Column="0" HorizontalAlignment="Right" Height="5" Width="50" Margin="5" Content="Save" />
+                <Button Grid.Column="0" HorizontalAlignment="Right" Height="5" Width="50" Margin="5" Content="Save" Visibility="Visible"  Command="{Binding SaveButton}" />
             </Grid>
             <!--<Expander HorizontalAlignment="Right"/>-->
         </Grid>
 
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
 
+                
+</Grid.ColumnDefinitions>
+            <TabControl Grid.Column="0"  HorizontalAlignment="Left" HorizontalContentAlignment="Left" FlowDirection="LeftToRight"   Margin="-2,0,0,0" x:Name="TabControl1" Background="LightBlue" Width="300" TabStripPlacement="Left" >
+                <!--SelectedItem="{Binding SelectedConfigurationTab}"-->
 
+                <TabControl.ItemContainerStyle>
+                    <Style TargetType="{x:Type TabItem}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Items.Count, RelativeSource={RelativeSource AncestorType={x:Type TabControl}, Mode=FindAncestor}}" Value="1">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TabControl.ItemContainerStyle>
 
-        <TabControl HorizontalAlignment="Left" HorizontalContentAlignment="Left" FlowDirection="LeftToRight"   Margin="-2,70,0,0" x:Name="TabControl1" Background="LightBlue" Width="300" TabStripPlacement="Left" >
-            <!--SelectedItem="{Binding SelectedConfigurationTab}"-->
-
-            <TabControl.ItemContainerStyle>
-                <Style TargetType="{x:Type TabItem}">
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Items.Count, RelativeSource={RelativeSource AncestorType={x:Type TabControl}, Mode=FindAncestor}}" Value="1">
-                            <Setter Property="Visibility" Value="Collapsed"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </TabControl.ItemContainerStyle>
-           
-            <!--Terrains--> 
-            <TabItem >
-                <TabItem.Header>
-                    <StackPanel  Orientation="Vertical">
-                        <Image Width="50" Source="{StaticResource Terrains}"/>
-                        <TextBlock Text="Terrains" HorizontalAlignment="Center"/>
-                    </StackPanel>
-                </TabItem.Header>
-                <!--<ContentControl Content="{Binding EnviromentVm}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <!--Terrains-->
+                <TabItem >
+                    <TabItem.Header>
+                        <StackPanel  Orientation="Vertical">
+                            <Image Width="50" Source="{StaticResource Terrains}"/>
+                            <TextBlock Text="Terrains" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <!--<ContentControl Content="{Binding EnviromentVm}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
 
                 </ContentControl>-->
-            </TabItem>
+                </TabItem>
 
-            <!--Sensors-->
-            <TabItem>
-                <TabItem.Header>
-                    <StackPanel  Orientation="Vertical">
-                        <Image Width="50" Source="{StaticResource SensorIcon}" />
-                        <TextBlock Text="Sensors"  HorizontalAlignment="Center"/>
-                    </StackPanel>
-                </TabItem.Header>
-                <ContentControl Content="{Binding CurrentSensorsPage}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                                            <!--was SensorVm-->
-                   
-                </ContentControl>
-            </TabItem>
+                <!--Sensors-->
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel  Orientation="Vertical">
+                            <Image Width="50" Source="{StaticResource SensorIcon}" />
+                            <TextBlock Text="Sensors"  HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <ContentControl Content="{Binding CurrentSensorsPage}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <!--was SensorVm-->
 
-            <!--brackets-->
-            <TabItem >
-                <TabItem.Header>
-                    <StackPanel  Orientation="Vertical">
-                        <Image Width="50" Source="{StaticResource BracketIcon}"/>
-                        <TextBlock Text="Stands"  HorizontalAlignment="Center"/>
-                    </StackPanel>
-                </TabItem.Header>
-                <ContentControl Content="{Binding StandsVm}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                     
-                </ContentControl>
-            </TabItem>
+                    </ContentControl>
+                </TabItem>
 
-            <!--Controller-->
-            <TabItem >
-                <TabItem.Header>
-                    <StackPanel  Orientation="Vertical">
-                        <Image Width="50" Source="{StaticResource Controller}"/>
-                        <TextBlock Text="Controller"  HorizontalAlignment="Center"/>
-                    </StackPanel>
-                </TabItem.Header>
-                <ContentControl Content="{Binding CurrentControllersPage}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <!--brackets-->
+                <TabItem >
+                    <TabItem.Header>
+                        <StackPanel  Orientation="Vertical">
+                            <Image Width="50" Source="{StaticResource BracketIcon}"/>
+                            <TextBlock Text="Stands"  HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <ContentControl Content="{Binding StandsVm}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
 
-                </ContentControl>
-            </TabItem>
+                    </ContentControl>
+                </TabItem>
 
-        </TabControl>
+                <!--Controller-->
+                <TabItem >
+                    <TabItem.Header>
+                        <StackPanel  Orientation="Vertical">
+                            <Image Width="50" Source="{StaticResource Controller}"/>
+                            <TextBlock Text="Controller"  HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <ContentControl Content="{Binding CurrentControllersPage}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
+
+                    </ContentControl>
+                </TabItem>
+
+            </TabControl>
+            
+            <views:UnityWindow Grid.Column="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/> 
+            
+        </Grid>
+      
     </Grid>
 </Window>
