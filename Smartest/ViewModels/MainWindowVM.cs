@@ -15,6 +15,7 @@ namespace Smartest.ViewModels
 {
     public class MainWindowVm : ViewModelBase
     {
+         private readonly IUnityCommunication _unityCommunication;
         //private ObservableCollection<ITabViewModel> tabViewModels;
         //internal ObservableCollection<ITabViewModel> TabViewModels
         //{
@@ -29,15 +30,16 @@ namespace Smartest.ViewModels
         public ICommand SaveButton { get; }
 
         //internal ITabViewModel SelectedTabViewModel;
-        public MainWindowVm()
+        public MainWindowVm(IUnityCommunication unityCommunication)
         {
+            _unityCommunication = unityCommunication;
             ProjectsData.CurrentProjectName = "Hummer";
 
             ProjectsData.CurrentConfigurationName = "Hummer First Test";
 
             SaveButton = new RelayCommand(SaveConfigurationCommand);
 
-            var path = @"C:\Program Files\Notepad++\notepad++.exe";
+            //var path = @"C:\Program Files\Notepad++\notepad++.exe";
            // LoadUnityProcess(path);
 
             //TabViewModels = new ObservableCollection<ITabViewModel>();
@@ -48,38 +50,40 @@ namespace Smartest.ViewModels
             //SelectedTabViewModel = TabViewModels[0];
         }
 
-        private object LoadUnityProcess//string path
-        {
-            get
-            {
-                //https://answers.unity.com/questions/245242/is-it-possible-to-use-unity-inside-wpf.html
-                //https://social.msdn.microsoft.com/Forums/vstudio/en-US/a08de79c-f16a-4d10-ab7f-5d0a99a91ff5/external-exe-inside-wpf-window?forum=wpf
+        //private object LoadUnityProcess//string path
+        //{
+        //    get
+        //    {
+        //        //https://answers.unity.com/questions/245242/is-it-possible-to-use-unity-inside-wpf.html
+        //        //https://social.msdn.microsoft.com/Forums/vstudio/en-US/a08de79c-f16a-4d10-ab7f-5d0a99a91ff5/external-exe-inside-wpf-window?forum=wpf
 
 
-                //  WindowsFormsHost host = new WindowsFormsHost();
-                //  System.Windows.Forms.Panel p = new System.Windows.Forms.Panel();
-                //   host.Child = p;
-                //   nPage.Header = "nouveau";
-                //   nPage.Content = host;
-                //   TabPage.Items.Add(nPage);
-                Process proc = Process.Start(
-                    new ProcessStartInfo()
-                    {
-                        FileName = @"C:\Program Files\Notepad++\notepad++.exe",
+        //        //  WindowsFormsHost host = new WindowsFormsHost();
+        //        //  System.Windows.Forms.Panel p = new System.Windows.Forms.Panel();
+        //        //   host.Child = p;
+        //        //   nPage.Header = "nouveau";
+        //        //   nPage.Content = host;
+        //        //   TabPage.Items.Add(nPage);
+        //        Process proc = Process.Start(
+        //            new ProcessStartInfo()
+        //            {
+        //                FileName = @"C:\Program Files\Notepad++\notepad++.exe",
 
-                        WindowStyle = ProcessWindowStyle.Normal
-                    });
-                Thread.Sleep(1000);
-                SetParent(proc.MainWindowHandle, this.MainWindowHandle);
+        //                WindowStyle = ProcessWindowStyle.Normal
+        //            });
+        //        Thread.Sleep(1000);
+        //        SetParent(proc.MainWindowHandle, this.MainWindowHandle);
 
-                return proc;
+        //        return proc;
 
-            }
-        }
+        //    }
+        //}
 
         private void SaveConfigurationCommand()
         {
-             
+
+            _unityCommunication.SendCommand("ChangeTerrainSurfce");
+
         }
 
 

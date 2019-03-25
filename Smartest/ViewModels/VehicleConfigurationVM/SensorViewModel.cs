@@ -94,7 +94,7 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
             AddItemToSelectedCollection(placedItem);
             //TODO 
             //Send Message to Unity - To spone item in to Scene
-            _unityCommunicator.SendCommand("");
+            _unityCommunicator.SendCommand("CreateObject_Sensors_Velodyne_Velodyne16");
 
             //Switch View to configuration if exists 
             if (dataItem.IsConfigurationExist)
@@ -117,7 +117,7 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
            RemoveItemToSelectedCollection(itemNameDelete);
             //TODO 
             //Send Message to Unity - To spone item in to Scene
-            _unityCommunicator.SendCommand("");
+            _unityCommunicator.SendCommand("RemoveObject_Sensors_Velodyne_Velodyne16");
 
         }
 
@@ -134,6 +134,8 @@ namespace Smartest.ViewModels.VehicleConfigurationVM
                 //change configuration file name
                 UpdateItemConfigurationFile(_nameBeforeEdit,dataItem);
                 //TODO send to unity name changed
+                _unityCommunicator.SendCommand("RenameObject_Sensors_Velodyne_Velodyne16_Test123");
+
             }
             else
             {
